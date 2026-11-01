@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cyber-dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NEO-CALC Pro - Ultra-modern Glassmorphic Calculator with Standard & Scientific modes, real-time evaluation, audio feedback, and history tape.">
+  <title>NEO-CALC Pro | Modern Glassmorphism Calculator</title>
+  <!-- BrowOS: fonts and icons are stored locally so the app works offline -->
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fontawesome/css/all.min.css">
+</head>
+<body>
+  <!-- Dynamic Animated Background Orbs -->
+  <div class="bg-scene" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+    <div class="noise-overlay"></div>
+  </div>
+
+  <main class="calculator-app">
+    <!-- Top App Bar / Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo-icon">
+          <i class="fa-solid fa-calculator"></i>
+        </div>
+        <div class="brand-text">
+          <h1>NEO-CALC <span class="badge">PRO</span></h1>
+          <p>Next-Gen Glassmorphic Engine</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- Sound Effect Toggle -->
+        <button id="soundToggle" class="icon-btn" title="Toggle Sound Feedback (Mute/Unmute)" aria-label="Toggle Sound">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+        <!-- Theme Selector Dropdown / Cycle -->
+        <div class="theme-selector-wrapper">
+          <button id="themeDropdownBtn" class="icon-btn" title="Switch Theme" aria-label="Switch Theme">
+            <i class="fa-solid fa-palette"></i>
+          </button>
+          <div id="themeMenu" class="theme-menu">
+            <button class="theme-opt active" data-theme-val="cyber-dark">
+              <span class="theme-dot" style="background: #00f2fe;"></span> Cyber Dark
+            </button>
+            <button class="theme-opt" data-theme-val="aurora-glass">
+              <span class="theme-dot" style="background: #ff007f;"></span> Aurora Glass
+            </button>
+            <button class="theme-opt" data-theme-val="midnight-oled">
+              <span class="theme-dot" style="background: #ff9900;"></span> Midnight OLED
+            </button>
+            <button class="theme-opt" data-theme-val="platinum-light">
+              <span class="theme-dot" style="background: #3b82f6;"></span> Platinum Light
+            </button>
+          </div>
+        </div>
+        <!-- History Tape Toggle -->
+        <button id="historyToggle" class="icon-btn" title="Calculation History" aria-label="Toggle History">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </button>
+        <!-- Shortcuts Modal Toggle -->
+        <button id="shortcutsBtn" class="icon-btn" title="Keyboard Shortcuts Guide" aria-label="Keyboard Shortcuts">
+          <i class="fa-solid fa-keyboard"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Glassmorphic Calculator Container -->
+    <div class="calc-container">
+      <!-- Calculator Body -->
+      <section class="calc-main-card">
+        <!-- Mode Switcher Tabs -->
+        <nav class="mode-tabs" role="tablist">
+          <button class="mode-tab active" data-mode="standard" role="tab" aria-selected="true">
+            <i class="fa-solid fa-calculator"></i> Standard
+          </button>
+          <button class="mode-tab" data-mode="scientific" role="tab" aria-selected="false">
+            <i class="fa-solid fa-flask"></i> Scientific
+          </button>
+          <button class="mode-tab" data-mode="converter" role="tab" aria-selected="false">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i> Converter
+          </button>
+        </nav>
+
+        <!-- Display Screen -->
+        <div class="display-screen">
+          <div class="display-status-bar">
+            <div class="angle-mode-badge" id="angleModeBadge">DEG</div>
+            <div class="memory-badge" id="memoryBadge" style="display: none;">M</div>
+            <button id="copyBtn" class="copy-display-btn" title="Copy Result to Clipboard">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+
+          <!-- Expression History Line -->
+          <div class="expression-line" id="expressionDisplay" title="Previous expression"></div>
+
+          <!-- Active Primary Output Line -->
+          <div class="output-line" id="outputDisplay">0</div>
+
+          <!-- Live Real-Time Preview Line -->
+          <div class="preview-line" id="previewDisplay"></div>
+        </div>
+
+        <!-- Memory Control Bar -->
+        <div class="memory-bar">
+          <button class="mem-btn" data-action="mc">MC</button>
+          <button class="mem-btn" data-action="mr">MR</button>
+          <button class="mem-btn" data-action="m-plus">M+</button>
+          <button class="mem-btn" data-action="m-minus">M−</button>
+          <button class="mem-btn" data-action="ms">MS</button>
+        </div>
+
+        <!-- Scientific Extension Keypad -->
+        <div class="scientific-keypad" id="scientificKeypad">
+          <button class="key sc-key" data-action="toggle-angle" id="angleToggleBtn" title="Toggle Degrees / Radians">RAD</button>
+          <button class="key sc-key" data-func="sin">sin</button>
+          <button class="key sc-key" data-func="cos">cos</button>
+          <button class="key sc-key" data-func="tan">tan</button>
+          <button class="key sc-key" data-func="pi">π</button>
+
+          <button class="key sc-key" data-func="sqrt">√x</button>
+          <button class="key sc-key" data-func="pow2">x²</button>
+          <button class="key sc-key" data-op="^">xʸ</button>
+          <button class="key sc-key" data-func="log">log</button>
+          <button class="key sc-key" data-func="ln">ln</button>
+
+          <button class="key sc-key" data-func="inv">1/x</button>
+          <button class="key sc-key" data-func="fact">n!</button>
+          <button class="key sc-key" data-func="e">e</button>
+          <button class="key sc-key" data-val="(">(</button>
+          <button class="key sc-key" data-val=")">)</button>
+        </div>
+
+        <!-- Standard Primary Keypad -->
+        <div class="standard-keypad" id="standardKeypad">
+          <!-- Row 1 -->
+          <button class="key fn-key clear-key" data-action="clear-all" title="Clear All (Escape)">AC</button>
+          <button class="key fn-key" data-action="backspace" title="Backspace (⌫)">
+            <i class="fa-solid fa-delete-left"></i>
+          </button>
+          <button class="key fn-key" data-action="percent" title="Percentage (%)">%</button>
+          <button class="key op-key" data-op="/" title="Divide (/)">÷</button>
+
+          <!-- Row 2 -->
+          <button class="key num-key" data-val="7">7</button>
+          <button class="key num-key" data-val="8">8</button>
+          <button class="key num-key" data-val="9">9</button>
+          <button class="key op-key" data-op="*" title="Multiply (*)">×</button>
+
+          <!-- Row 3 -->
+          <button class="key num-key" data-val="4">4</button>
+          <button class="key num-key" data-val="5">5</button>
+          <button class="key num-key" data-val="6">6</button>
+          <button class="key op-key" data-op="-" title="Subtract (-)">−</button>
+
+          <!-- Row 4 -->
+          <button class="key num-key" data-val="1">1</button>
+          <button class="key num-key" data-val="2">2</button>
+          <button class="key num-key" data-val="3">3</button>
+          <button class="key op-key" data-op="+" title="Add (+)">+</button>
+
+          <!-- Row 5 -->
+          <button class="key fn-key" data-action="negate" title="Negate (±)">±</button>
+          <button class="key num-key" data-val="0">0</button>
+          <button class="key num-key" data-val=".">.</button>
+          <button class="key equals-key" data-action="equals" title="Calculate (= / Enter)">=</button>
+        </div>
+
+        <!-- Unit Converter View (Sub-panel) -->
+        <div class="converter-panel" id="converterPanel" style="display: none;">
+          <div class="converter-category-tabs">
+            <button class="conv-tab active" data-conv="length"><i class="fa-solid fa-ruler"></i> Length</button>
+            <button class="conv-tab" data-conv="weight"><i class="fa-solid fa-weight-hanging"></i> Weight</button>
+            <button class="conv-tab" data-conv="temp"><i class="fa-solid fa-temperature-half"></i> Temp</button>
+            <button class="conv-tab" data-conv="data"><i class="fa-solid fa-hard-drive"></i> Storage</button>
+          </div>
+
+          <div class="converter-box">
+            <div class="conv-row">
+              <label for="convFromVal">From</label>
+              <div class="conv-input-group">
+                <input type="number" id="convFromVal" value="1" step="any">
+                <select id="convFromUnit"></select>
+              </div>
+            </div>
+            <div class="conv-divider">
+              <button id="convSwapBtn" class="conv-swap-btn" title="Swap Units">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+              </button>
+            </div>
+            <div class="conv-row">
+              <label for="convToVal">To</label>
+              <div class="conv-input-group">
+                <input type="number" id="convToVal" readonly>
+                <select id="convToUnit"></select>
+              </div>
+            </div>
+            <div class="conv-formula-display" id="convFormulaDisplay">1 m = 100 cm</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- History Tape Drawer / Side Panel -->
+      <aside class="calc-history-drawer" id="historyDrawer">
+        <div class="history-header">
+          <h3><i class="fa-solid fa-clock-rotate-left"></i> Calculation Tape</h3>
+          <button id="clearHistoryBtn" class="clear-history-btn" title="Clear All History">
+            <i class="fa-solid fa-trash-can"></i> Clear
+          </button>
+        </div>
+        <div class="history-list" id="historyList">
+          <div class="empty-history">
+            <i class="fa-solid fa-receipt"></i>
+            <p>No calculations yet</p>
+            <span>Your computation tape will appear here</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Footer Stats / Info -->
+    <footer class="app-footer">
+      <p>CodeAlpha Frontend Internship &bull; <strong>Task 2: Build a Calculator</strong> &bull; Created by <strong>Nikhil Rathor</strong></p>
+    </footer>
+  </main>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <dialog id="shortcutsModal" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fa-solid fa-keyboard"></i> Keyboard Shortcuts</h2>
+        <button id="closeShortcutsModal" class="close-modal-btn" aria-label="Close Modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="shortcut-grid">
+          <div class="shortcut-item"><kbd>0</kbd> - <kbd>9</kbd><span>Numbers</span></div>
+          <div class="shortcut-item"><kbd>+</kbd> <kbd>-</kbd> <kbd>*</kbd> <kbd>/</kbd><span>Arithmetic Operators</span></div>
+          <div class="shortcut-item"><kbd>Enter</kbd> or <kbd>=</kbd><span>Calculate Result</span></div>
+          <div class="shortcut-item"><kbd>Backspace</kbd><span>Delete Last Character</span></div>
+          <div class="shortcut-item"><kbd>Escape</kbd> or <kbd>C</kbd><span>Clear All (AC)</span></div>
+          <div class="shortcut-item"><kbd>%</kbd><span>Percentage</span></div>
+          <div class="shortcut-item"><kbd>(</kbd> <kbd>)</kbd><span>Parentheses</span></div>
+          <div class="shortcut-item"><kbd>^</kbd><span>Exponent (Power)</span></div>
+          <div class="shortcut-item"><kbd>S</kbd><span>Sine function</span></div>
+          <div class="shortcut-item"><kbd>O</kbd><span>Cosine function</span></div>
+          <div class="shortcut-item"><kbd>T</kbd><span>Tangent function</span></div>
+          <div class="shortcut-item"><kbd>R</kbd><span>Square Root (√)</span></div>
+          <div class="shortcut-item"><kbd>P</kbd><span>Pi (π)</span></div>
+          <div class="shortcut-item"><kbd>E</kbd><span>Euler's Number (e)</span></div>
+          <div class="shortcut-item"><kbd>H</kbd><span>Toggle History Drawer</span></div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

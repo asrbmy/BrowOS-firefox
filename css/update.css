@@ -1,0 +1,118 @@
+/* Update popup */
+
+.update-popup {
+	position: fixed;
+	right: 20px;
+	bottom: 110px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+
+	width: min(340px, calc(100vw - 40px));
+	padding: 16px 18px;
+
+	border: 1px solid rgba(var(--soft), 0.15);
+	border-radius: 16px;
+
+	background: rgba(var(--window-surface), calc(var(--glass) + 0.09));
+	backdrop-filter: blur(20px);
+
+	color: var(--text);
+
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+	z-index: 100000;
+}
+
+.update-popup[hidden] {
+	display: none;
+}
+
+.update-title {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.update-notes {
+	color: rgba(var(--soft), 0.65);
+
+	font-size: 13px;
+	line-height: 1.45;
+	white-space: pre-line;
+}
+
+.update-notes:empty {
+	display: none;
+}
+
+.update-buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 6px;
+
+	margin-top: 4px;
+}
+
+.update-buttons button {
+	padding: 7px 12px;
+
+	border: none;
+	border-radius: 8px;
+
+	background: rgba(var(--soft), 0.08);
+	color: var(--text);
+
+	font-size: 12px;
+
+	cursor: pointer;
+}
+
+.update-buttons button:hover {
+	background: rgba(var(--soft), 0.14);
+}
+
+.update-buttons button.primary {
+	background: var(--accent);
+	color: white;
+}
+
+/* the Update button in the taskbar stays until BrowOS is updated */
+
+.taskbar-update {
+	margin-left: auto;
+	padding: 6px 12px;
+
+	border: none;
+	border-radius: 999px;
+
+	background: var(--accent);
+	color: white;
+
+	font-size: 12px;
+	font-weight: 600;
+
+	cursor: pointer;
+
+	animation: update-glow 2.4s ease-in-out infinite;
+}
+
+.taskbar-update[hidden] {
+	display: none;
+}
+
+.taskbar-update:not([hidden]) + .taskbar-right {
+	margin-left: 12px;
+}
+
+@keyframes update-glow {
+	50% {
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.taskbar-update {
+		animation: none;
+	}
+}

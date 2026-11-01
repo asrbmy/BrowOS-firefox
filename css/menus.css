@@ -1,0 +1,71 @@
+/* Right click menu */
+
+.context-menu {
+	position: fixed;
+
+	min-width: 180px;
+	padding: 6px;
+
+	background: rgba(20, 20, 25, 0.95);
+
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 10px;
+
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+	display: none;
+
+	z-index: 1200;
+}
+
+.context-menu.show {
+	display: block;
+}
+
+.context-item {
+	padding: 8px 12px;
+
+	border-radius: 6px;
+	cursor: pointer;
+
+	font-size: 13px;
+}
+
+.context-item[hidden] {
+	display: none;
+}
+
+.context-item:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+/* NOTEPAD, CALCULATOR AND PAINT (open-source apps) */
+
+.notepad-window {
+	width: 900px;
+	height: 600px;
+}
+
+.calculator-window {
+	width: 520px;
+	height: 640px;
+}
+
+/* the calculator was designed for a full page, so it's shown a bit smaller */
+
+.calculator-window .web-app-frame {
+	zoom: 0.75;
+}
+
+.paint-window {
+	width: 1000px;
+	height: 640px;
+}
+
+/* Line between groups in right click menus */
+
+.context-line {
+	margin: 4px 8px;
+
+	border-top: 1px solid rgba(var(--soft), 0.12);
+}

@@ -1,0 +1,74 @@
+/* Clock */
+
+.clock-window {
+	width: 640px;
+	height: 460px;
+}
+
+.clock-app {
+	flex: 1;
+
+	padding: 24px;
+
+	text-align: center;
+	overflow-y: auto;
+}
+
+.clock-app-time {
+	font-size: 64px;
+	font-weight: 600;
+}
+
+.clock-app-date {
+	margin-top: 6px;
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.clock-cards {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 14px;
+
+	margin-top: 28px;
+}
+
+.clock-card {
+	padding: 18px;
+
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.clock-card h3 {
+	margin: 0 0 10px;
+
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.clock-card-time {
+	margin-bottom: 14px;
+
+	font-size: 34px;
+	font-weight: 600;
+}
+
+.clock-card-buttons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.clock-card-buttons input {
+	width: 60px;
+	padding: 6px;
+
+	border: none;
+	border-radius: 8px;
+
+	background: rgba(255, 255, 255, 0.1);
+	color: white;
+
+	text-align: center;
+}

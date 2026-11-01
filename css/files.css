@@ -1,0 +1,156 @@
+/* Explorer window */
+
+.explorer-window {
+	position: fixed;
+
+	width: 700px;
+	height: 450px;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	background: rgba(25, 25, 30, 0.92);
+	backdrop-filter: blur(20px);
+
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 18px;
+
+	display: none;
+	flex-direction: column;
+
+	overflow: hidden;
+
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+	z-index: 100;
+}
+
+.explorer-window.show {
+	display: flex;
+}
+
+.explorer-header {
+	height: 48px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 0 16px;
+
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+	cursor: grab;
+	user-select: none;
+}
+
+.explorer-header:active {
+	cursor: grabbing;
+}
+
+.explorer-header h3 {
+	margin: 0;
+	font-size: 15px;
+}
+
+.close-explorer {
+	border: none;
+	background: transparent;
+
+	color: white;
+	font-size: 20px;
+
+	cursor: pointer;
+}
+
+.explorer-content {
+	display: flex;
+	flex: 1;
+}
+
+.explorer-sidebar {
+	width: 150px;
+	padding: 14px;
+
+	border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.explorer-sidebar div {
+	padding: 9px;
+
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.explorer-sidebar div:hover {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.explorer-files {
+	flex: 1;
+	padding: 20px;
+}
+
+.folder-nav.active {
+	background: rgba(255, 255, 255, 0.12);
+}
+
+.file-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 90px);
+
+	gap: 18px;
+	margin-top: 20px;
+}
+
+.file-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	padding: 10px 5px;
+
+	border-radius: 10px;
+	cursor: pointer;
+
+	font-size: 12px;
+	text-align: center;
+}
+
+.file-item:hover {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.file-icon {
+	font-size: 32px;
+	margin-bottom: 7px;
+}
+
+/* Files: under construction */
+
+.files-construction {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+
+	text-align: center;
+}
+
+.construction-icon {
+	font-size: 44px;
+	margin-bottom: 6px;
+}
+
+.construction-title {
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.construction-text {
+	color: rgba(var(--soft), 0.55);
+	font-size: 13px;
+}

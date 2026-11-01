@@ -1,0 +1,349 @@
+/* Appearance */
+
+:root {
+	--accent: #2196f3;
+	--glass: 0.88;
+
+	--surface: 20, 20, 25;
+	--window-surface: 22, 22, 28;
+	--header-surface: 30, 30, 36;
+	--text: white;
+	--soft: 255, 255, 255;
+}
+
+html.light-mode {
+	--surface: 243, 243, 246;
+	--window-surface: 250, 250, 252;
+	--header-surface: 228, 228, 234;
+	--text: #1d1d1f;
+	--soft: 0, 0, 0;
+}
+
+/* glass: dark or light, more or less transparent */
+
+.taskbar {
+	background: rgba(var(--surface), calc(var(--glass) - 0.13));
+}
+
+.start-menu,
+.apps-panel,
+.context-menu {
+	background: rgba(var(--surface), var(--glass));
+	border-color: rgba(var(--soft), 0.15);
+	color: var(--text);
+}
+
+.app-window,
+.explorer-window {
+	background: rgba(var(--window-surface), calc(var(--glass) + 0.09));
+	border-color: rgba(var(--soft), 0.15);
+	color: var(--text);
+
+	backdrop-filter: blur(20px);
+}
+
+.window-header {
+	background: rgba(var(--header-surface), calc(var(--glass) + 0.07));
+}
+
+/* text */
+
+.clock,
+.close-explorer,
+.window-controls button,
+.volume-control button,
+.app-button,
+.clock-card-buttons input,
+.apps-search,
+.credit-link {
+	color: var(--text);
+}
+
+.date {
+	color: rgba(var(--soft), 0.85);
+}
+
+.settings-page h3,
+.clock-card h3 {
+	color: rgba(var(--soft), 0.7);
+}
+
+.about-box p,
+.clock-app-date,
+.credits-intro {
+	color: rgba(var(--soft), 0.6);
+}
+
+.apps-section-title,
+.apps-no-results,
+.credit-detail {
+	color: rgba(var(--soft), 0.55);
+}
+
+.apps-search::placeholder {
+	color: rgba(var(--soft), 0.45);
+}
+
+/* hover and backgrounds */
+
+.setting-row,
+.clock-card,
+.credit-row {
+	background: rgba(var(--soft), 0.05);
+}
+
+.explorer-sidebar div:hover,
+.file-item:hover,
+.settings-nav:hover,
+.apps-search {
+	background: rgba(var(--soft), 0.08);
+}
+
+.start-button:hover,
+.explorer-button:hover,
+.menu-item:hover,
+.window-controls button:hover,
+.taskbar-app-button:hover,
+.apps-grid-item:hover,
+.context-item:hover,
+.app-button,
+.volume-control button,
+.credit-link,
+.clock-card-buttons input {
+	background: rgba(var(--soft), 0.1);
+}
+
+.app-button:hover,
+.volume-control button:hover,
+.credit-link:hover {
+	background: rgba(var(--soft), 0.16);
+}
+
+/* lines */
+
+.explorer-header {
+	border-bottom-color: rgba(var(--soft), 0.1);
+}
+
+.explorer-sidebar,
+.settings-sidebar {
+	border-right-color: rgba(var(--soft), 0.1);
+}
+
+.power {
+	border-top-color: rgba(var(--soft), 0.12);
+}
+
+.apps-search {
+	border-color: rgba(var(--soft), 0.15);
+}
+
+/* accent color */
+
+input:checked + .slider {
+	background-color: var(--accent);
+}
+
+#volumeSlider {
+	accent-color: var(--accent);
+}
+
+.app-button.active {
+	background: var(--accent);
+}
+
+.apps-search:focus,
+.wallpaper-option.selected {
+	border-color: var(--accent);
+}
+
+.desktop-icon span[contenteditable="true"] {
+	outline-color: var(--accent);
+}
+
+.settings-nav.active,
+.folder-nav.active,
+.apps-menu-item.active,
+.apps-grid-item.selected,
+.taskbar-app-button.active {
+	background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* square corners */
+
+html.square-corners
+	*:not(.slider):not(.accent-option):not(.window-controls button):not(.close-explorer):not(
+		.taskbar
+	):not(.taskbar *) {
+	border-radius: 0;
+}
+
+/* mac window buttons */
+
+html.mac-buttons .window-header,
+html.mac-buttons .explorer-header {
+	justify-content: flex-start;
+	gap: 14px;
+}
+
+html.mac-buttons .window-controls {
+	order: -1;
+	flex-direction: row-reverse;
+	align-items: center;
+	gap: 8px;
+
+	height: auto;
+}
+
+html.mac-buttons .window-controls button,
+html.mac-buttons .close-explorer {
+	order: -1;
+
+	width: 13px;
+	height: 13px;
+	padding: 0;
+
+	border-radius: 50%;
+	font-size: 0;
+}
+
+html.mac-buttons .window-close,
+html.mac-buttons .window-close:hover,
+html.mac-buttons .close-explorer {
+	background: #ff5f57 !important;
+}
+
+html.mac-buttons .window-minimize,
+html.mac-buttons .window-minimize:hover {
+	background: #febc2e;
+}
+
+html.mac-buttons .window-controls button:hover,
+html.mac-buttons .close-explorer:hover {
+	filter: brightness(0.85);
+}
+
+/* appearance settings */
+
+.accent-list {
+	display: flex;
+	gap: 10px;
+
+	margin-bottom: 16px;
+}
+
+.accent-option {
+	width: 30px;
+	height: 30px;
+	padding: 0;
+
+	border: 3px solid transparent;
+	border-radius: 50%;
+
+	cursor: pointer;
+}
+
+.accent-option.selected {
+	border-color: var(--text);
+}
+
+.setting-row select,
+.setting-row input[type="text"] {
+	padding: 6px 10px;
+
+	border: 1px solid rgba(var(--soft), 0.15);
+	border-radius: 8px;
+
+	background: rgba(var(--soft), 0.08);
+	color: var(--text);
+
+	font-size: 13px;
+	outline: none;
+}
+
+.setting-row select option {
+	color: black;
+}
+
+#transparencySlider {
+	accent-color: var(--accent);
+}
+
+/* Taskbar size */
+
+.taskbar {
+	min-width: min(var(--taskbar-width, 460px), calc(100vw - 32px));
+}
+
+html.taskbar-auto .taskbar {
+	min-width: 0;
+}
+
+#taskbarWidthSlider {
+	accent-color: var(--accent);
+}
+
+#taskbarWidthSlider:disabled {
+	opacity: 0.4;
+}
+
+/* More space between settings groups */
+
+.settings-page h3 ~ h3 {
+	margin-top: 24px;
+}
+
+/* Maximize */
+
+.app-window.maximized {
+	left: 0 !important;
+	top: 0 !important;
+
+	width: 100vw !important;
+	height: 100vh !important;
+
+	transform: none !important;
+	border-radius: 0;
+}
+
+.app-window.maximized .resize-handle {
+	display: none;
+}
+
+html.mac-buttons .window-controls .window-maximize {
+	order: 1;
+	background: #28c840;
+}
+
+html.mac-buttons .window-controls .window-minimize {
+	order: 2;
+}
+
+html.mac-buttons .window-controls .window-close {
+	order: 3;
+}
+
+/* Blur behind the taskbar */
+
+.taskbar-blur {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	height: 130px;
+
+	background: linear-gradient(to top, rgba(var(--surface), 0.55), transparent);
+
+	backdrop-filter: blur(14px);
+	mask-image: linear-gradient(to top, black 35%, transparent);
+
+	pointer-events: none;
+	z-index: 999;
+
+	display: none;
+}
+
+html:has(.app-window.maximized.show) .taskbar-blur {
+	display: block;
+}

@@ -1,0 +1,46 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-image: url("wallpapers/wallpaper.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	color: white;
+	font-family: Arial, sans-serif;
+
+	overflow: hidden;
+}
+
+h1 {
+	font-size: 100px;
+	font-weight: 600;
+	margin: 0;
+}
+
+/* keyboard users can always see where they are */
+
+:focus-visible {
+	outline: 2px solid var(--accent, #7aa2ff);
+	outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

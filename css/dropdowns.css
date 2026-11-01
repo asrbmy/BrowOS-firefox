@@ -1,0 +1,95 @@
+/* Custom dropdowns */
+
+.dropdown {
+	position: relative;
+}
+
+.dropdown-button {
+	position: relative;
+
+	min-width: 130px;
+	padding: 6px 30px 6px 10px;
+
+	border: 1px solid rgba(var(--soft), 0.15);
+	border-radius: 8px;
+
+	background: rgba(var(--soft), 0.08);
+	color: var(--text);
+
+	font-size: 13px;
+	text-align: left;
+}
+
+.dropdown-button::after {
+	content: "▾";
+
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+
+	opacity: 0.7;
+}
+
+.dropdown-list {
+	position: absolute;
+	top: calc(100% + 6px);
+	right: 0;
+
+	min-width: 100%;
+	padding: 6px;
+
+	border: 1px solid rgba(var(--soft), 0.15);
+	border-radius: 10px;
+
+	background: rgb(var(--window-surface));
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+	display: none;
+	z-index: 10;
+}
+
+.dropdown.up .dropdown-list {
+	top: auto;
+	bottom: calc(100% + 6px);
+}
+
+.dropdown.open .dropdown-list {
+	display: block;
+}
+
+.dropdown-item {
+	padding: 8px 10px;
+
+	border-radius: 6px;
+
+	font-size: 13px;
+	white-space: nowrap;
+}
+
+.dropdown-item:hover {
+	background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* upload and reset buttons follow dark / light mode */
+
+.upload-button,
+.reset-button {
+	background: rgba(var(--soft), 0.1);
+	color: var(--text);
+}
+
+.upload-button:hover {
+	background: rgba(var(--soft), 0.16);
+}
+
+.reset-button:hover {
+	color: white;
+}
+
+/* room to scroll above the taskbar when a window is maximized */
+
+.app-window.maximized .settings-pages,
+.app-window.maximized .clock-app {
+	padding-bottom: 110px;
+}

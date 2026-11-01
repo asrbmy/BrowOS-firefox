@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BrowOS</title>
+
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/taskbar.css">
+	<link rel="stylesheet" href="css/files.css">
+	<link rel="stylesheet" href="css/desktop.css">
+	<link rel="stylesheet" href="css/windows.css">
+	<link rel="stylesheet" href="css/settings.css">
+	<link rel="stylesheet" href="css/clock-app.css">
+	<link rel="stylesheet" href="css/apps-panel.css">
+	<link rel="stylesheet" href="css/menus.css">
+	<link rel="stylesheet" href="css/appearance.css">
+	<link rel="stylesheet" href="css/cursor.css">
+	<link rel="stylesheet" href="css/dropdowns.css">
+	<link rel="stylesheet" href="css/task-manager.css">
+	<link rel="stylesheet" href="css/browser.css">
+	<link rel="stylesheet" href="css/update.css">
+	<link rel="stylesheet" href="css/browstore.css">
+</head>
+
+<body>
+	<div class="boot-screen" aria-hidden="true">
+		<img class="boot-logo" src="icons/browos-logo.png" alt="">
+	</div>
+
+	<div class="boot-input-shield" aria-hidden="true"></div>
+
+	<main class="desktop-shell" aria-label="BrowOS desktop">
+	<h1 id="desktopTitle">BrowOS</h1>
+
+	<!-- Start menu -->
+	<div class="start-menu" id="startMenu">
+		<h2>BrowOS</h2>
+
+		<div class="menu-item apps-menu-item" id="appsMenuItem">
+			<span>Apps</span>
+			<span>›</span>
+		</div>
+
+		<div class="menu-item" data-app="browstore">BrowStore</div>
+		<div class="menu-item" data-window="explorerWindow">Files</div>
+		<div class="menu-item" data-app="taskmanager">Task Manager</div>
+		<div class="menu-item" data-window="settingsWindow">Settings</div>
+		<div class="menu-item power" id="powerButton">Turn off</div>
+	</div>
+
+	<!-- Apps panel -->
+	<div class="apps-panel" id="appsPanel">
+		<input class="apps-search" id="appsSearch" type="text" placeholder="Search apps" spellcheck="false">
+
+		<!-- Default apps -->
+		<div class="apps-section">
+			<div class="apps-section-title">Default apps</div>
+			<div class="apps-grid" id="defaultAppsGrid"></div>
+		</div>
+
+		<!-- Installed apps -->
+		<div class="apps-section">
+			<div class="apps-section-title">Installed apps</div>
+			<div class="apps-grid" id="installedAppsGrid"></div>
+		</div>
+
+		<div class="apps-no-results" id="appsNoResults" hidden>No apps found</div>
+	</div>
+
+	<!-- Right click menu -->
+	<div class="context-menu" id="contextMenu">
+		<div class="context-item" data-action="open">Open</div>
+		<div class="context-item" data-action="add-desktop">Add to desktop</div>
+		<div class="context-item" data-action="remove-desktop">Remove from desktop</div>
+		<div class="context-item" data-action="pin">Pin to taskbar</div>
+		<div class="context-item" data-action="unpin">Unpin from taskbar</div>
+		<div class="context-item" data-action="rename">Rename</div>
+		<div class="context-item delete-item" data-action="uninstall">Remove from BrowOS</div>
+	</div>
+
+	<!-- Desktop right click menu -->
+	<div class="context-menu" id="desktopMenu">
+		<div class="context-item" data-action="next-wallpaper">Next wallpaper</div>
+		<div class="context-item" data-action="personalize">Personalize</div>
+		<div class="context-item" data-action="sort-icons">Sort icons</div>
+		<div class="context-line"></div>
+		<div class="context-item" data-action="add-website">Add a website</div>
+		<div class="context-item" data-action="browstore">BrowStore</div>
+		<div class="context-item" data-action="task-manager">Task Manager</div>
+		<div class="context-line"></div>
+		<div class="context-item" data-action="refresh">Refresh</div>
+	</div>
+
+	<!-- Taskbar right click menu -->
+	<div class="context-menu" id="taskbarMenu">
+		<div class="context-item" data-action="taskbar-settings">Taskbar settings</div>
+		<div class="context-item" data-action="task-manager">Task Manager</div>
+	</div>
+
+	<!-- Desktop -->
+	<div class="desktop-area" id="desktopArea">
+	</div>
+
+	<!-- Browser -->
+	<div class="app-window browser-window" id="browserWindow" data-app-id="browser" data-app-name="Browser" data-app-icon="icons/browser-icon.png">
+		<div class="window-header">
+			<div class="window-title">
+				<img src="icons/browser-icon.png" alt="">
+				<span>Browser</span>
+			</div>
+
+			<div class="window-controls">
+				<button class="window-minimize">—</button>
+				<button class="window-close">×</button>
+			</div>
+		</div>
+
+		<div class="browser-app">
+			<img class="browser-logo" src="icons/browser-icon.png" alt="">
+
+			<label class="browser-search">
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<circle cx="11" cy="11" r="7"></circle>
+					<line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+				</svg>
+
+				<input id="browserInput" type="text" placeholder="Search the web or type an address" spellcheck="false">
+			</label>
+
+			<div class="browser-engines" id="browserEngines">
+				<button data-engine="google">Google</button>
+				<button data-engine="duckduckgo">DuckDuckGo</button>
+				<button data-engine="bing">Bing</button>
+				<button data-engine="brave">Brave</button>
+			</div>
+
+			<div class="browser-hint">Opens in a new tab</div>
+		</div>
+	</div>
+
+	<!-- Settings -->
+	<div class="app-window settings-window" id="settingsWindow" data-app-id="settings" data-app-name="Settings" data-app-icon="icons/settings-icon.png">
+		<div class="window-header">
+			<div class="window-title">
+				<img src="icons/settings-icon.png" alt="">
+				<span>Settings</span>
+			</div>
+
+			<div class="window-controls">
+				<button class="window-minimize">—</button>
+				<button class="window-close">×</button>
+			</div>
+		</div>
+
+		<div class="settings-content">
+			<div class="settings-sidebar">
+				<div class="settings-nav active" data-page="personalizationPage">Personalization</div>
+				<div class="settings-nav" data-page="startupPage">Startup</div>
+				<div class="settings-nav" data-page="taskbarPage">Taskbar</div>
+				<div class="settings-nav" data-page="aboutPage">About</div>
+				<div class="settings-nav" data-page="creditsPage">Credits</div>
+			</div>
+
+			<div class="settings-pages">
+				<!-- Personalization -->
+				<div class="settings-page show" id="personalizationPage">
+					<h2>Personalization</h2>
+					<h3>Wallpaper</h3>
+
+					<div class="wallpaper-list">
+						<img class="wallpaper-option" src="wallpapers/wallpaper.jpg" data-wallpaper="wallpapers/wallpaper.jpg" loading="lazy" alt="Wallpaper">
+						<img class="wallpaper-option" src="wallpapers/wallpaper2.jpg" data-wallpaper="wallpapers/wallpaper2.jpg" loading="lazy" alt="Wallpaper">
+						<img class="wallpaper-option" src="wallpapers/wallpaper3.jpg" data-wallpaper="wallpapers/wallpaper3.jpg" loading="lazy" alt="Wallpaper">
+						<img class="wallpaper-option" src="wallpapers/wallpaper4.jpg" data-wallpaper="wallpapers/wallpaper4.jpg" loading="lazy" alt="Wallpaper">
+						<img class="wallpaper-option" src="wallpapers/wallpaper5.jpg" data-wallpaper="wallpapers/wallpaper5.jpg" loading="lazy" alt="Wallpaper">
+						<img class="wallpaper-option" src="wallpapers/wallpaper6.jpg" data-wallpaper="wallpapers/wallpaper6.jpg" loading="lazy" alt="Wallpaper">
+					</div>
+
+					<label class="upload-button">
+						Upload image
+
+						<input type="file" accept="image/*" id="wallpaperUpload" hidden>
+					</label>
+
+					<h3>Accent color</h3>
+
+					<div class="accent-list">
+						<button class="accent-option" data-color="#2196F3" style="background: #2196F3"></button>
+						<button class="accent-option" data-color="#8e5cf7" style="background: #8e5cf7"></button>
+						<button class="accent-option" data-color="#e91e63" style="background: #e91e63"></button>
+						<button class="accent-option" data-color="#f44336" style="background: #f44336"></button>
+						<button class="accent-option" data-color="#ff9800" style="background: #ff9800"></button>
+						<button class="accent-option" data-color="#4caf50" style="background: #4caf50"></button>
+						<button class="accent-option" data-color="#00bcd4" style="background: #00bcd4"></button>
+					</div>
+
+					<h3>Windows</h3>
+
+					<div class="setting-row">
+						<span>Theme</span>
+
+						<select id="themeSelect">
+							<option value="dark">Dark</option>
+							<option value="light">Light</option>
+						</select>
+					</div>
+
+					<div class="setting-row">
+						<span>Window corners</span>
+
+						<select id="cornersSelect">
+							<option value="rounded">Rounded</option>
+							<option value="square">Square</option>
+						</select>
+					</div>
+
+					<div class="setting-row">
+						<span>Window buttons</span>
+
+						<select id="buttonsSelect">
+							<option value="windows">Windows</option>
+							<option value="mac">Mac</option>
+						</select>
+					</div>
+
+					<div class="setting-row">
+						<span>Transparency</span>
+						<input type="range" id="transparencySlider" min="0" max="100">
+					</div>
+
+					<h3>Desktop text</h3>
+
+					<div class="setting-row">
+						<span>Show desktop text</span>
+
+						<label class="switch">
+							<input type="checkbox" id="desktopTextToggle">
+							<span class="slider"></span>
+						</label>
+					</div>
+
+					<div class="setting-row">
+						<span>Text</span>
+						<input type="text" id="desktopTextInput" maxlength="20" placeholder="BrowOS">
+					</div>
+
+					<h3>Cursor</h3>
+
+					<div class="setting-row">
+						<span>Cursor style</span>
+
+						<select id="cursorSelect">
+							<option value="browos">BrowOS</option>
+							<option value="normal">Normal</option>
+														<option value="custom">My cursor</option>
+						</select>
+					</div>
+
+					<div class="setting-row">
+						<span>Cursor size</span>
+						<input type="range" id="cursorSizeSlider" min="16" max="64">
+					</div>
+
+					<div class="setting-row">
+						<span>Your own cursor (PNG or GIF)</span>
+
+						<label class="upload-button">
+							Upload cursor
+
+							<input type="file" accept="image/png, image/gif, image/webp" id="cursorUpload" hidden>
+						</label>
+					</div>
+				</div>
+
+				<!-- Startup -->
+				<div class="settings-page" id="startupPage">
+					<h2>Startup</h2>
+
+					<div class="setting-row">
+						<span>Boot animation</span>
+
+						<label class="switch">
+							<input type="checkbox" id="bootToggle">
+							<span class="slider"></span>
+						</label>
+					</div>
+
+					<div class="setting-row">
+						<span>Startup sound</span>
+
+						<label class="switch">
+							<input type="checkbox" id="soundToggle">
+							<span class="slider"></span>
+						</label>
+					</div>
+
+					<div class="setting-row">
+						<span>Volume</span>
+
+						<div class="volume-control">
+							<input type="range" min="0" max="100" id="volumeSlider">
+							<span id="volumeText">70%</span>
+							<button id="testSoundButton">Test</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Taskbar -->
+				<div class="settings-page" id="taskbarPage">
+					<h2>Taskbar</h2>
+
+					<div class="setting-row">
+						<span>Show clock</span>
+
+						<label class="switch">
+							<input type="checkbox" id="clockToggle">
+							<span class="slider"></span>
+						</label>
+					</div>
+
+					<div class="setting-row">
+						<span>Auto size</span>
+
+						<label class="switch">
+							<input type="checkbox" id="taskbarAutoToggle">
+							<span class="slider"></span>
+						</label>
+					</div>
+
+					<div class="setting-row">
+						<span>Width</span>
+						<input type="range" id="taskbarWidthSlider" min="460" max="1600">
+					</div>
+				</div>
+
+				<!-- About -->
+				<div class="settings-page" id="aboutPage">
+					<h2>About</h2>
+
+					<div class="about-box">
+						<img src="icons/browos-logo.png" alt="">
+
+						<div>
+							<div class="about-name">BrowOS</div>
+							<p>Version 1.0</p>
+							<p class="about-by">By <a href="https://www.youtube.com/@YourAllyhere" target="_blank">Allysun</a></p>
+						</div>
+					</div>
+
+					<button class="reset-button" id="resetSettingsButton">Reset settings</button>
+				</div>
+
+				<!-- Credits -->
+				<div class="settings-page" id="creditsPage">
+					<h2>Credits</h2>
+
+					<ul class="credits">
+						<li>Notepad by <a href="https://github.com/amitmerchant1990/notepad" target="_blank">Amit Merchant</a></li>
+						<li>Calculator by <a href="https://github.com/nikh-tail/CodeAlpha_Task" target="_blank">Nikhil Rathor</a></li>
+						<li>Calculator app icon by <a href="https://www.magnific.com/icon/calculator_1011863" target="_blank">Magnific</a></li>
+						<li>Paint by <a href="https://github.com/viliusle/miniPaint" target="_blank">ViliusL</a></li>
+						<li>"<a href="https://opengameart.org/content/starry-night-background" target="_blank">Starry Night Background</a>" wallpaper by <a href="http://www.sethbyrd.com" target="_blank">Seth Byrd</a>, CC0</li>
+						<li>"<a href="https://www.peppercarrot.com/0_sources/0ther/wallpapers/hi-res/2018-05-22_Episode-25-page-4_by-David-Revoy.jpg" target="_blank">Episode 25, page 4</a>" wallpaper by <a href="https://www.peppercarrot.com" target="_blank">David Revoy</a> (Pepper&amp;Carrot), <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></li>
+						<li>"<a href="https://www.peppercarrot.com/0_sources/0ther/wallpapers/hi-res/2017-04-10_Only-Komona_by-David-Revoy.jpg" target="_blank">Only Komona</a>" wallpaper by <a href="https://www.peppercarrot.com" target="_blank">David Revoy</a> (Pepper&amp;Carrot), <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></li>
+						<li>"<a href="https://www.davidrevoy.com/article948/point-of-view" target="_blank">Point of View</a>" wallpaper by <a href="https://www.davidrevoy.com" target="_blank">David Revoy</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Notepad -->
+	<!-- Notepad by Amit Merchant (MIT) - apps/notepad -->
+	<div class="app-window notepad-window" id="notepadWindow" data-app-id="notepad" data-app-name="Notepad" data-app-icon="icons/notepad-icon.png">
+		<div class="window-header">
+			<div class="window-title">
+				<img src="icons/notepad-icon.png" alt="">
+				<span>Notepad</span>
+			</div>
+
+			<div class="window-controls">
+				<button class="window-minimize">—</button>
+				<button class="window-close">×</button>
+			</div>
+		</div>
+
+		<iframe class="web-app-frame" data-src="apps/notepad/index.html"></iframe>
+	</div>
+
+	<!-- Calculator -->
+	<!-- NEO-CALC Pro by Nikhil Rathor / nikh-tail (MIT) - apps/calculator -->
+	<div class="app-window calculator-window" id="calculatorWindow" data-app-id="calculator" data-app-name="Calculator" data-app-icon="icons/calculator-icon.png">
+		<div class="window-header">
+			<div class="window-title">
+				<img src="icons/calculator-icon.png" alt="">
+				<span>Calculator</span>
+			</div>
+
+			<div class="window-controls">
+				<button class="window-minimize">—</button>
+				<button class="window-close">×</button>
+			</div>
+		</div>
+
+		<iframe class="web-app-frame" data-src="apps/calculator/index.html"></iframe>
+	</div>
+
+	<!-- Clock -->
+	<div class="app-window clock-window" id="clockWindow" data-app-id="clock" data-app-name="Clock" data-app-icon="icons/clock-icon.png">
+		<div class="window-header">
+			<div class="window-title">
+				<img src="icons/clock-icon.png" alt="">
+				<span>Clock</span>
+			</div>
+
+			<div class="window-controls">
+				<button class="window-minimize">—</button>
+				<button class="window-close">×</button>
+			</div>
+		</div>
+
+		<div class="clock-app">
+			<div class="clock-app-time" id="clockAppTime">00:00:00</div>
+			<div class="clock-app-date" id="clockAppDate"></div>
+
+			<div class="clock-cards">
+				<div class="clock-card">
+					<h3>Stopwatch</h3>
+					<div class="clock-card-time" id="stopwatchTime">00:00.00</div>
+
+					<div class="clock-card-buttons">
+						<button class="app-button" id="stopwatchStartButton">Start</button>
+						<button class="app-button" id="stopwatchResetButton">Reset</button>
+					</div>
+				</div>
+
+				<div class="clock-card">
+					<h3>Timer</h3>
+					<div class="clock-card-time" id="timerTime">05:00</div>
+
+					<div class="clock-card-buttons">
+						<input type="number" id="timerMinutes" min="1" max="999" value="5">
+						<span>min</span>
+						<button class="app-button" id="timerStartButton">Start</button>
+						<button class="app-button" id="timerResetButton">Reset</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Paint -->
+	<!-- miniPaint by ViliusL (MIT) - loaded from the web -->
+	<div class="app-window paint-window" id="paintWindow" data-app-id="paint" data-app-name="Paint" data-app-icon="icons/paint-icon.png">
+		<div class="window-header">
+			<div class="window-title">
+				<img src="icons/paint-icon.png" alt="">
+				<span>Paint</span>
+			</div>
+
+			<div class="window-controls">
+				<button class="window-minimize">—</button>
+				<button class="window-close">×</button>
+			</div>
+		</div>
+
+		<iframe class="web-app-frame" data-src="https://viliusle.github.io/miniPaint/" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-downloads allow-presentation"></iframe>
+	</div>
+
+	<!-- BrowStore -->
+	<div class="app-window browstore-window" id="browstoreWindow" data-app-id="browstore" data-app-name="BrowStore" data-app-icon="icons/browstore-icon.png">
+		<div class="window-header">
+			<div class="window-title">
+				<img src="icons/browstore-icon.png" alt="">
+				<span>BrowStore</span>
+			</div>
+
+			<div class="window-controls">
+				<button class="window-minimize">—</button>
+				<button class="window-close">×</button>
+			</div>
+		</div>
+
+		<div class="store" id="store">
+			<!-- Sidebar -->
+			<div class="store-sidebar">
+				<div class="store-logo">
+					<img src="icons/browstore-icon.png" alt="">
+					<span>BrowStore</span>
+				</div>
+
+				<button class="store-nav active" data-tab="discover">Discover</button>
+				<button class="store-nav" data-tab="browos">BrowOS Apps</button>
+				<button class="store-nav" data-tab="library">Library</button>
+
+				<div class="store-sidebar-bottom">
+					<button class="store-side-link" id="addWebsiteButton">+ Add a website</button>
+
+					<div class="store-side-more">
+						<button class="store-more-button" id="storeMoreButton" title="More">⋯</button>
+
+						<div class="store-menu" id="storeMoreMenu">
+							<div class="store-menu-item" id="refreshInfoButton">Refresh info</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Main -->
+			<div class="store-main" id="storeMain">
+				<div class="store-top">
+					<label class="store-search">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<circle cx="11" cy="11" r="7"></circle>
+							<line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+						</svg>
+
+						<input id="storeSearch" type="text" placeholder="Search store" spellcheck="false">
+					</label>
+				</div>
+
+				<div class="store-page" id="storePage">
+					<h2 class="store-heading" id="storeHeading">Discover</h2>
+					<div class="store-grid" id="storeGrid"></div>
+					<div class="store-message" id="storeMessage" hidden></div>
+				</div>
+
+				<!-- App details -->
+				<div class="store-details" id="storeDetails" hidden></div>
+			</div>
+
+			<!-- Add a website -->
+			<div class="store-sheet" id="websiteSheet" hidden>
+				<div class="store-sheet-box">
+					<h3>Add a website</h3>
+					<input class="store-input" id="websiteUrl" type="text" placeholder="Website address" spellcheck="false">
+					<input class="store-input" id="websiteName" type="text" placeholder="Name (optional)" spellcheck="false">
+
+					<label class="store-icon-pick">
+						<span id="websiteIconLabel">Icon (optional)</span>
+						<input type="file" accept="image/*" id="websiteIcon" hidden>
+					</label>
+
+					<div class="store-error" id="websiteError" hidden></div>
+
+					<div class="store-sheet-buttons">
+						<button class="store-button" id="websiteCancel">Cancel</button>
+						<button class="store-button primary" id="websiteAdd">Add</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="store-toast" id="storeToast" hidden></div>
+		</div>
+	</div>
+
+	<!-- Task manager -->
+	<div class="app-window task-manager-window" id="taskManagerWindow" data-app-id="taskmanager" data-app-name="Task Manager" data-app-icon="icons/taskmanager-icon.png">
+		<div class="window-header">
+			<div class="window-title">
+				<img src="icons/taskmanager-icon.png" alt="">
+				<span>Task Manager</span>
+			</div>
+
+			<div class="window-controls">
+				<button class="window-minimize">—</button>
+				<button class="window-close">×</button>
+			</div>
+		</div>
+
+		<div class="task-manager">
+			<!-- System memory -->
+			<div class="tm-memory" id="tmMemory" hidden>
+				<div class="tm-memory-top">
+					<span class="tm-label">System memory</span>
+					<span id="tmMemoryText"></span>
+				</div>
+
+				<div class="tm-bar">
+					<div class="tm-bar-used" id="tmMemoryBar"></div>
+				</div>
+
+				<div class="tm-memory-numbers">
+					<span id="tmMemoryUsed"></span>
+					<span id="tmMemoryAvailable"></span>
+				</div>
+			</div>
+
+			<!-- Running apps -->
+			<div class="tm-list-title">
+				<span class="tm-label">Running apps</span>
+				<span id="tmCount">0</span>
+			</div>
+
+			<div class="tm-list" id="tmList"></div>
+			<div class="tm-empty" id="tmEmpty" hidden>No apps running</div>
+			<div class="tm-footer" id="tmFooter">Memory per app: press Shift + Esc</div>
+		</div>
+	</div>
+
+	<!-- Explorer -->
+	<div class="explorer-window" id="explorerWindow">
+		<div class="explorer-header">
+			<h3>Files</h3>
+			<button class="close-explorer" id="closeExplorer">×</button>
+		</div>
+
+		<div class="explorer-content">
+			<div class="explorer-sidebar"></div>
+
+			<div class="explorer-files files-construction">
+				<div class="construction-icon">🚧</div>
+				<div class="construction-title">Under construction</div>
+				<div class="construction-text">Files is coming in a future update.</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Update popup -->
+	<div class="update-popup" id="updatePopup" hidden>
+		<div class="update-title" id="updateTitle"></div>
+		<div class="update-notes" id="updateNotes"></div>
+
+		<div class="update-buttons">
+			<button id="updateLater">Later</button>
+			<button class="primary" id="updateDownload">Download</button>
+		</div>
+	</div>
+
+	<!-- BLUR BEHIND THE TASKBAR (only when a window is maximized) -->
+	<div class="taskbar-blur"></div>
+
+	<!-- Taskbar -->
+	<div class="taskbar">
+		<div class="taskbar-left">
+			<button class="start-button" id="startButton">
+				<img src="icons/browos-logo.png" alt="Start">
+			</button>
+
+			<button class="explorer-button" id="explorerButton">
+				<img src="icons/explorer-icon.png" alt="Explorer">
+			</button>
+
+			<div class="taskbar-apps" id="taskbarApps"></div>
+		</div>
+
+		<button class="taskbar-update" id="taskbarUpdate" title="A new version of BrowOS is available" hidden>Update</button>
+
+		<div class="taskbar-right">
+			<div class="clock" id="clock">00:00</div>
+			<div class="date" id="date">01/01/2026</div>
+		</div>
+	</div>
+
+	<audio id="startup-sound" src="sounds/startup.mp3" preload="auto"></audio>
+</main>
+
+<!-- Cursor -->
+<div class="fake-cursor hide" id="fakeCursor"></div>
+<script src="js/start-menu.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/files.js"></script>
+<script src="js/desktop-icons.js"></script>
+<script src="js/windows.js"></script>
+<script src="js/taskbar.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/clock-app.js"></script>
+<script src="js/appearance.js"></script>
+<script src="js/maximize.js"></script>
+<script src="js/wallpaper.js"></script>
+<script src="js/cursor.js"></script>
+<script src="js/dropdowns.js"></script>
+<script src="js/browser.js"></script>
+<script src="js/app-list.js"></script>
+<script src="js/apps.js"></script>
+<script src="js/shortcuts.js"></script>
+<script src="js/app-actions.js"></script>
+<script src="js/floating-windows.js"></script>
+<script src="js/desktop-menu.js"></script>
+<script src="js/main.js"></script>
+<script src="js/browstore.js"></script>
+<script src="js/task-manager.js"></script>
+<script src="js/update.js"></script>
+</body>
+</html>

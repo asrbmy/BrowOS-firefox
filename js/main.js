@@ -1,0 +1,7 @@
+// Start
+
+renderAppsPanel();
+
+renderDesktop();
+
+renderPins();

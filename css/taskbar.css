@@ -1,0 +1,175 @@
+/* Taskbar */
+
+.taskbar {
+	position: fixed;
+	bottom: 16px;
+	left: 50%;
+	transform: translateX(-50%);
+
+	width: max-content;
+	min-width: 460px;
+	gap: 16px;
+	height: 58px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 0 12px;
+
+	border-radius: 22px;
+	overflow: hidden;
+
+	background: rgba(20, 20, 25, 0.75);
+	backdrop-filter: blur(20px);
+
+	z-index: 1000;
+}
+
+.taskbar-left {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.taskbar-right {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+
+	margin-left: auto;
+
+	font-size: 12px;
+	line-height: 1.1;
+}
+
+/* Start button */
+
+.start-button {
+	width: 44px;
+	height: 44px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 0;
+	margin: 0;
+
+	border: none;
+	background: transparent;
+
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.start-button:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.start-button:active {
+	transform: scale(0.92);
+}
+
+.start-button img {
+	width: 32px;
+	height: 32px;
+
+	display: block;
+	object-fit: contain;
+
+	pointer-events: none;
+}
+
+/* Start menu */
+
+.start-menu {
+	position: fixed;
+
+	bottom: 84px;
+	left: calc(50% - 230px);
+
+	width: 230px;
+	padding: 12px;
+
+	background: rgba(20, 20, 25, 0.88);
+
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 18px;
+
+	display: none;
+	flex-direction: column;
+	gap: 6px;
+
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+	z-index: 1100;
+}
+
+.start-menu.show {
+	display: flex;
+}
+
+.start-menu h2 {
+	margin: 4px 8px 10px;
+	font-size: 18px;
+}
+
+.menu-item {
+	padding: 10px 12px;
+
+	border-radius: 10px;
+	cursor: pointer;
+
+	font-size: 14px;
+}
+
+.menu-item:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.power {
+	margin-top: 8px;
+
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+	padding-top: 12px;
+}
+
+/* Explorer button */
+
+.explorer-button {
+	width: 44px;
+	height: 44px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 0;
+	margin: 0;
+
+	border: none;
+	background: transparent;
+
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.explorer-button:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.explorer-button img {
+	width: 28px;
+	height: 28px;
+
+	object-fit: contain;
+	display: block;
+
+	pointer-events: none;
+}

@@ -1,0 +1,154 @@
+/* Task manager */
+
+.task-manager-window {
+	width: 520px;
+	height: 460px;
+}
+
+.task-manager {
+	flex: 1;
+
+	padding: 18px 20px;
+
+	color: var(--text);
+	overflow-y: auto;
+}
+
+.tm-label {
+	color: rgba(var(--soft), 0.6);
+
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.tm-memory {
+	margin-bottom: 20px;
+	padding: 14px 16px;
+
+	border-radius: 12px;
+	background: rgba(var(--soft), 0.05);
+}
+
+.tm-memory-top,
+.tm-memory-numbers,
+.tm-list-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.tm-memory-top {
+	margin-bottom: 10px;
+
+	font-size: 13px;
+}
+
+.tm-bar {
+	height: 8px;
+
+	border-radius: 4px;
+	background: rgba(var(--soft), 0.1);
+
+	overflow: hidden;
+}
+
+.tm-bar-used {
+	width: 0;
+	height: 100%;
+
+	border-radius: 4px;
+	background: var(--accent);
+
+	transition: width 0.4s;
+}
+
+.tm-memory-numbers {
+	margin-top: 8px;
+
+	color: rgba(var(--soft), 0.6);
+	font-size: 12px;
+}
+
+.tm-list-title {
+	margin-bottom: 10px;
+
+	font-size: 13px;
+}
+
+.tm-row {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	margin-bottom: 6px;
+	padding: 10px 12px;
+
+	border-radius: 10px;
+	background: rgba(var(--soft), 0.05);
+}
+
+.tm-row img {
+	width: 24px;
+	height: 24px;
+
+	object-fit: contain;
+}
+
+.tm-name {
+	flex: 1;
+	min-width: 0;
+
+	overflow: hidden;
+
+	font-size: 13px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.tm-tag {
+	color: rgba(var(--soft), 0.5);
+
+	font-size: 11px;
+	white-space: nowrap;
+}
+
+.tm-row button {
+	padding: 5px 12px;
+
+	border: none;
+	border-radius: 7px;
+
+	background: rgba(var(--soft), 0.1);
+	color: var(--text);
+
+	font-size: 12px;
+}
+
+.tm-row button:hover {
+	background: rgba(var(--soft), 0.16);
+}
+
+.tm-row .tm-close:hover {
+	background: #c42b1c;
+	color: white;
+}
+
+.tm-empty {
+	padding: 20px;
+
+	color: rgba(var(--soft), 0.5);
+
+	font-size: 13px;
+	text-align: center;
+}
+
+/* Task manager: footer */
+
+.tm-footer {
+	margin-top: 14px;
+
+	color: rgba(var(--soft), 0.45);
+
+	font-size: 11px;
+	text-align: center;
+}
