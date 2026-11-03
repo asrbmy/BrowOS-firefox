@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BrowOS SDK demo</title>
+	<style>body{font-family:Arial,sans-serif;padding:16px}button{margin:4px;padding:8px 12px}</style>
+</head>
+<body>
+	<h3>BrowOS SDK demo</h3>
+	<p id="info">Waiting for BrowOS...</p>
+	<button id="notify">Notify</button>
+	<button id="write">Save a file</button>
+	<button id="read">Read it back</button>
+	<pre id="out"></pre>
+	<script src="browos-sdk.js"></script>
+	<script>
+		var out = document.getElementById("out");
+		function show(p) { return p.then(function (v) { out.textContent = "OK: " + JSON.stringify(v); }, function (e) { out.textContent = "Error: " + e.message; }); }
+		BrowOS.ready.then(function (i) { document.getElementById("info").textContent = "Theme " + i.theme; }, function (e) { document.getElementById("info").textContent = e.message; });
+		document.getElementById("notify").onclick = function () { show(BrowOS.notify("Hello", "From the SDK demo")); };
+		document.getElementById("write").onclick = function () { show(BrowOS.files.write("demo.txt", "saved at " + new Date().toISOString())); };
+		document.getElementById("read").onclick = function () { show(BrowOS.files.read("demo.txt")); };
+	</script>
+</body>
+</html>

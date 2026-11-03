@@ -1,0 +1,23 @@
+.sudoku { height: 100%; display: flex; flex-direction: column; gap: 8px; padding: 12px; align-items: center; }
+.su-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.su-top select { padding: 6px; border: 1px solid var(--line); border-radius: 8px; background: rgba(var(--panel), 0.06); }
+.su-top select option { color: #000; }
+.su-time { font-variant-numeric: tabular-nums; font-weight: 600; }
+.su-msg { min-width: 100px; font-size: 13px; }
+.su-stage { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; container-type: size; }
+.su-board { display: grid; grid-template-columns: repeat(9, 1fr); width: min(100cqw, 100cqh); height: min(100cqw, 100cqh); border: 2px solid var(--text); }
+.su-cell { position: relative; display: flex; align-items: center; justify-content: center; padding: 0; border: 1px solid var(--line); border-radius: 0; background: transparent; font-size: min(5.2cqw, 5.2cqh); }
+.su-cell:nth-child(3n) { border-right: 2px solid var(--text); }
+.su-cell:nth-child(9n) { border-right: 0; }
+.su-cell:nth-child(n+19):nth-child(-n+27), .su-cell:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid var(--text); }
+.su-cell.given { font-weight: 700; background: rgba(var(--panel), 0.07); }
+.su-cell.mine { color: var(--accent); }
+.su-cell.related { background: rgba(var(--panel), 0.09); }
+.su-cell.same { background: color-mix(in srgb, var(--accent) 25%, transparent); }
+.su-cell.selected { background: color-mix(in srgb, var(--accent) 45%, transparent); }
+.su-cell.wrong { color: var(--danger); background: rgba(229, 83, 75, 0.15); }
+.su-notes { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; height: 100%; font-size: min(1.8cqw, 1.8cqh); color: var(--muted); line-height: 1; }
+.su-notes span { display: flex; align-items: center; justify-content: center; }
+.su-pad { display: flex; gap: 5px; }
+.su-pad button { width: 38px; padding: 8px 0; font-weight: 600; }
+.su-pad button.done { opacity: 0.35; }

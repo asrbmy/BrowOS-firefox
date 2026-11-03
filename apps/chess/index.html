@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Play chess against the computer or a friend on the same screen.">
+	<title>Chess</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="chess">
+		<div class="chess-main">
+			<div class="board-wrap"><div class="board" id="board" role="grid" aria-label="Chess board"></div></div>
+			<div class="promo" id="promo" hidden></div>
+		</div>
+		<aside class="chess-side">
+			<div class="chess-status" id="status" role="status"></div>
+			<div class="chess-controls">
+				<label>Opponent
+					<select id="mode">
+						<option value="1">Computer: easy</option>
+						<option value="2" selected>Computer: medium</option>
+						<option value="3">Computer: hard</option>
+						<option value="0">Two players</option>
+					</select>
+				</label>
+				<label>You play
+					<select id="side"><option value="w">White</option><option value="b">Black</option></select>
+				</label>
+				<div class="row">
+					<button id="newGame" class="primary">New game</button>
+					<button id="undo">Undo</button>
+					<button id="flip">Flip</button>
+				</div>
+			</div>
+			<ol class="chess-moves" id="moves"></ol>
+		</aside>
+	</div>
+	<script src="../shared/theme.js"></script>
+	<script src="chess-core.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

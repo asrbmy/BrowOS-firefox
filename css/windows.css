@@ -6,7 +6,8 @@
 	width: 850px;
 	height: 550px;
 
-	top: 50%;
+	/* centred in the space above the taskbar */
+	top: calc(50% - 40px);
 	left: 50%;
 
 	transform: translate(-50%, -50%);

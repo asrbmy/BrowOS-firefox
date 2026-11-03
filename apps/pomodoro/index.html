@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="A focus timer with short and long breaks.">
+	<title>Pomodoro</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="pomo">
+		<div class="pomo-modes" id="modes">
+			<button data-mode="focus" class="on">Focus</button>
+			<button data-mode="short">Short break</button>
+			<button data-mode="long">Long break</button>
+		</div>
+
+		<div class="pomo-ring">
+			<svg viewBox="0 0 120 120" aria-hidden="true">
+				<circle class="pomo-track" cx="60" cy="60" r="54"></circle>
+				<circle class="pomo-progress" id="progress" cx="60" cy="60" r="54"></circle>
+			</svg>
+
+			<div class="pomo-time" id="time">25:00</div>
+			<div class="pomo-label muted" id="label">Time to focus</div>
+		</div>
+
+		<div class="pomo-buttons">
+			<button class="primary" id="startButton">Start</button>
+			<button id="resetButton">Reset</button>
+			<button id="skipButton">Skip</button>
+		</div>
+
+		<div class="pomo-stats muted" id="stats"></div>
+
+		<details class="pomo-settings">
+			<summary>Durations</summary>
+
+			<label>Focus <input type="number" id="focusMinutes" min="1" max="180"> min</label>
+			<label>Short break <input type="number" id="shortMinutes" min="1" max="60"> min</label>
+			<label>Long break <input type="number" id="longMinutes" min="1" max="90"> min</label>
+		</details>
+	</div>
+
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

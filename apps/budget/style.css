@@ -1,0 +1,21 @@
+.budget { height: 100%; display: flex; flex-direction: column; gap: 12px; padding: 16px; overflow-y: auto; }
+.b-top { display: flex; align-items: center; gap: 8px; }
+.b-top h2 { flex: 1; margin: 0; font-size: 16px; text-align: center; }
+.b-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.b-card { padding: 10px; border-radius: 12px; background: rgba(var(--panel), 0.06); }
+.b-card small { color: var(--muted); display: block; }
+.b-card b { font-size: 18px; }
+.b-card.in b { color: #4caf50; } .b-card.out b { color: var(--danger); }
+.b-bars { display: flex; flex-direction: column; gap: 5px; }
+.b-bar { display: grid; grid-template-columns: 110px 1fr 80px; gap: 8px; align-items: center; font-size: 12px; }
+.b-track { height: 10px; border-radius: 5px; background: rgba(var(--panel), 0.08); overflow: hidden; }
+.b-fill { height: 100%; background: var(--accent); }
+.b-form { display: grid; grid-template-columns: 1fr 100px 130px auto; gap: 6px; }
+.b-form input, .b-form select { padding: 7px 8px; border: 1px solid var(--line); border-radius: 8px; background: rgba(var(--panel), 0.06); min-width: 0; }
+.b-form select option { color: #000; }
+.b-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.b-item { display: grid; grid-template-columns: 56px 1fr auto auto; gap: 10px; align-items: center; padding: 7px 10px; border-radius: 8px; background: rgba(var(--panel), 0.05); font-size: 13px; }
+.b-item .amt.in { color: #4caf50; } .b-item .amt.out { color: var(--danger); }
+.b-item button { padding: 1px 7px; }
+.b-tools { display: flex; gap: 6px; flex-wrap: wrap; }
+@media (max-width: 560px) { .b-form { grid-template-columns: 1fr 1fr; } }

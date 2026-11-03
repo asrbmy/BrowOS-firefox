@@ -3,7 +3,7 @@
 const taskbarApps = document.getElementById("taskbarApps");
 
 function getTaskbarButton(appId) {
-	return document.querySelector('[data-taskbar-app="' + CSS.escape(String(appId)) + '"]');
+	return document.querySelector(`[data-taskbar-app="${appId}"]`);
 }
 
 function createTaskbarButton(appWindow) {
@@ -25,16 +25,25 @@ function createTaskbarButton(appWindow) {
 
 	button.dataset.taskbarApp = appId;
 
-	// built with the DOM, never as HTML text: app names and icons can come from websites
+	button.innerHTML = `
 
-	const icon = document.createElement("img");
+		<img
+			src="${appIcon}"
+			alt="${appName}"
+		>
 
-	icon.src = appIcon || "";
-	icon.alt = appName || "";
-
-	button.appendChild(icon);
+	`;
 
 	button.addEventListener("click", function () {
+		// the window is on another virtual desktop: go there instead of hiding it
+		if (typeof windowOnOtherDesktop === "function" && windowOnOtherDesktop(appWindow)) {
+			switchDesktop(Number(appWindow.dataset.desktop));
+
+			bringToFront(appWindow);
+
+			return;
+		}
+
 		if (appWindow.classList.contains("show")) {
 			appWindow.classList.remove("show");
 

@@ -1,0 +1,12 @@
+# zips made for releases or the website
+*.zip
+
+# tools and test leftovers
+node_modules/
+.wrangler/
+
+# system files
+.DS_Store
+Thumbs.db
+desktop.ini
+dist/

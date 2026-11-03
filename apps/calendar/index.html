@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="A calendar with events, repeats and reminders. Everything stays in your browser.">
+	<title>Calendar</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="cal">
+		<section class="cal-month">
+			<header>
+				<button id="prev" aria-label="Previous month">‹</button>
+				<h2 id="title"></h2>
+				<button id="next" aria-label="Next month">›</button>
+				<button id="today">Today</button>
+			</header>
+			<div class="cal-weekdays" id="weekdays"></div>
+			<div class="cal-grid" id="grid" role="grid"></div>
+		</section>
+
+		<section class="cal-day">
+			<h3 id="dayTitle"></h3>
+			<ul class="cal-events" id="events"></ul>
+			<div class="muted" id="noEvents">No events.</div>
+
+			<form class="cal-form" id="form">
+				<input type="text" id="fTitle" placeholder="Add an event" maxlength="120" autocomplete="off" required>
+				<div class="row">
+					<input type="date" id="fDate" required>
+					<input type="time" id="fTime" title="Leave empty for an all day event">
+				</div>
+				<div class="row stack">
+					<select id="fRepeat" title="Repeat">
+						<option value="none">Does not repeat</option>
+						<option value="daily">Every day</option>
+						<option value="weekdays">Every weekday</option>
+						<option value="weekly">Every week</option>
+						<option value="monthly">Every month</option>
+						<option value="yearly">Every year</option>
+					</select>
+					<select id="fRemind" title="Reminder">
+						<option value="-1">No reminder</option>
+						<option value="0">At the time</option>
+						<option value="5">5 minutes before</option>
+						<option value="15" selected>15 minutes before</option>
+						<option value="30">30 minutes before</option>
+						<option value="60">1 hour before</option>
+						<option value="1440">1 day before</option>
+					</select>
+				</div>
+				<textarea id="fNotes" placeholder="Notes (optional)" rows="2" maxlength="500"></textarea>
+				<div class="row">
+					<button class="primary" type="submit" id="save">Add event</button>
+					<button type="button" id="cancel" hidden>Cancel</button>
+				</div>
+			</form>
+		</section>
+	</div>
+
+	<script src="../shared/theme.js"></script>
+	<script src="calendar-core.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

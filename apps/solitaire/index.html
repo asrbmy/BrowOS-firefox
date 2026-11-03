@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Klondike solitaire with undo.">
+	<title>Solitaire</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="sol">
+		<div class="sol-top">
+			<button id="newGame" class="primary">New game</button>
+			<button id="undo">Undo</button>
+			<button id="auto" title="Move every card that can go to the foundations">Auto</button>
+			<span class="muted">Moves <b id="moves">0</b></span>
+			<span class="muted">Time <b id="time">0:00</b></span>
+			<span class="sol-msg" id="msg" role="status"></span>
+		</div>
+		<div class="sol-table" id="table"></div>
+	</div>
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

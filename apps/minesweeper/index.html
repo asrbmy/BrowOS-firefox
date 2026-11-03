@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="The classic mine finding game, with three difficulty levels.">
+	<title>Minesweeper</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="mines">
+		<div class="mines-top">
+			<span class="mines-counter" id="flags" title="Mines left">010</span>
+
+			<button id="face" title="New game">🙂</button>
+
+			<span class="mines-counter" id="timer" title="Time">000</span>
+
+			<select id="level" title="Difficulty">
+				<option value="easy">Easy 9×9</option>
+				<option value="medium">Medium 16×16</option>
+				<option value="hard">Hard 24×16</option>
+			</select>
+		</div>
+
+		<div class="mines-wrap">
+			<div class="mines-board" id="board"></div>
+		</div>
+
+		<div class="mines-help muted">Click to open · right click or long press to flag</div>
+	</div>
+
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

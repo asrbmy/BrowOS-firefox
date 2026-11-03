@@ -1,0 +1,289 @@
+/* Widgets and sticky notes */
+
+.widget-layer {
+	position: fixed;
+
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 90px;
+
+	pointer-events: none;
+
+	z-index: 8;
+}
+
+.widget {
+	position: absolute;
+
+	width: 246px;
+
+	border: 1px solid rgba(var(--soft), 0.15);
+	border-radius: 16px;
+
+	background: rgba(var(--surface), calc(var(--glass) - 0.2));
+	color: var(--text);
+
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+	overflow: hidden;
+
+	pointer-events: auto;
+}
+
+.widget.dragging,
+.sticky-note.dragging {
+	opacity: 0.9;
+}
+
+.widget-header {
+	padding: 7px 12px;
+
+	font-size: 11px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+
+	opacity: 0.65;
+
+	cursor: grab;
+	user-select: none;
+}
+
+.widget-header:active {
+	cursor: grabbing;
+}
+
+.widget-body {
+	padding: 0 14px 14px;
+}
+
+.widget-big {
+	font-size: 34px;
+	font-weight: 600;
+	line-height: 1.1;
+}
+
+.widget-small {
+	margin-top: 4px;
+
+	font-size: 12px;
+	opacity: 0.8;
+}
+
+.widget-link {
+	margin-top: 8px;
+	padding: 3px 0;
+
+	border: none;
+	background: transparent;
+	color: var(--accent);
+
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.widget-link:hover {
+	text-decoration: underline;
+}
+
+/* Calendar */
+
+.calendar-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	margin-bottom: 6px;
+
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.calendar-bar button {
+	width: 24px;
+	height: 24px;
+
+	padding: 0;
+
+	border: none;
+	border-radius: 6px;
+
+	background: transparent;
+	color: var(--text);
+
+	font-size: 16px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.calendar-bar button:hover {
+	background: rgba(var(--soft), 0.12);
+}
+
+.calendar-grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 2px;
+
+	font-size: 12px;
+	text-align: center;
+}
+
+.calendar-grid span {
+	padding: 4px 0;
+
+	border-radius: 6px;
+}
+
+.calendar-head {
+	opacity: 0.55;
+}
+
+.calendar-today {
+	background: var(--accent);
+	color: white;
+	font-weight: 600;
+}
+
+/* Quote */
+
+.quote-text {
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+/* Weather */
+
+.weather-widget-top {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.weather-widget-icon {
+	font-size: 34px;
+	line-height: 1;
+}
+
+/* System */
+
+.system-list {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+
+	font-size: 12px;
+}
+
+.system-row {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.system-row span:first-child {
+	opacity: 0.65;
+}
+
+/* Sticky notes: the note stays yellow, pink... in light and dark mode */
+
+.sticky-note {
+	position: absolute;
+
+	min-width: 140px;
+	min-height: 110px;
+
+	display: flex;
+	flex-direction: column;
+
+	border-radius: 6px;
+
+	background: var(--note, #ffe066);
+	color: #2b2b2b;
+
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+
+	overflow: hidden;
+	resize: both;
+
+	pointer-events: auto;
+}
+
+.sticky-header {
+	flex: none;
+
+	height: 24px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 0 4px;
+
+	background: rgba(0, 0, 0, 0.1);
+
+	cursor: grab;
+	user-select: none;
+}
+
+.sticky-header:active {
+	cursor: grabbing;
+}
+
+.sticky-header button {
+	width: 22px;
+	height: 20px;
+
+	padding: 0;
+
+	border: none;
+	border-radius: 4px;
+
+	background: transparent;
+	color: rgba(0, 0, 0, 0.6);
+
+	font-size: 15px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.sticky-header button:hover {
+	background: rgba(0, 0, 0, 0.12);
+	color: rgba(0, 0, 0, 0.9);
+}
+
+.sticky-note textarea {
+	flex: 1;
+
+	min-height: 0;
+
+	padding: 8px 10px;
+
+	border: none;
+	outline: none;
+	resize: none;
+
+	background: transparent;
+	color: inherit;
+
+	font-family: "Segoe Print", "Comic Sans MS", Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.35;
+}
+
+.sticky-note textarea::placeholder {
+	color: rgba(0, 0, 0, 0.45);
+}
+
+.sticky-note.note-flash {
+	animation: note-flash 0.4s ease 3;
+}
+
+@keyframes note-flash {
+	50% {
+		transform: scale(1.06);
+	}
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Bring back apps you removed from BrowOS, or delete them for good.">
+	<title>Recycle Bin</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="bin">
+		<div class="bin-top">
+			<div>
+				<div class="bin-title">Recycle Bin</div>
+				<div class="muted" id="summary"></div>
+			</div>
+
+			<button id="emptyButton">Empty Recycle Bin</button>
+		</div>
+
+		<ul class="bin-list" id="list"></ul>
+
+		<div class="bin-empty muted" id="empty" hidden>
+			Apps you remove from BrowOS show up here,<br>so you can bring them back.
+		</div>
+	</div>
+
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

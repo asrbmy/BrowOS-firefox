@@ -66,10 +66,6 @@ function setFloatingButton(appId, open) {
 }
 
 async function openFloatingWindow(app) {
-	if (!isWebUrl(app.url)) {
-		return;
-	}
-
 	// already open: bring it to the front
 
 	if (floatingWindows[app.id]) {
@@ -178,9 +174,6 @@ async function keepInside(windowId) {
 	chrome.windows.update(windowId, update).catch(function () {});
 }
 
-// not every browser has this event; without it the check a few times per second below does the work
-
-if (chrome.windows.onBoundsChanged)
 chrome.windows.onBoundsChanged.addListener(async function (changed) {
 	// BrowOS itself moved: the floating windows follow (position only)
 
@@ -316,7 +309,7 @@ setInterval(async function () {
 	}
 }, 250);
 
-chrome.windows.onRemoved.addListener(function (windowId) {
+if (chrome.windows && chrome.windows.onRemoved) chrome.windows.onRemoved.addListener(function (windowId) {
 	const appId = floatingAppId(windowId);
 
 	if (appId) {

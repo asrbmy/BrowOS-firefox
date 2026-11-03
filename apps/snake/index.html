@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="The classic snake game.">
+	<title>Snake</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="snake">
+		<div class="snake-top">
+			<span>Score <b id="score">0</b></span>
+			<span>Best <b id="best">0</b></span>
+			<select id="speed" title="Speed">
+				<option value="150">Slow</option>
+				<option value="105" selected>Normal</option>
+				<option value="70">Fast</option>
+			</select>
+			<button id="restart">New game</button>
+		</div>
+
+		<div class="snake-stage">
+			<canvas id="board" width="480" height="480"></canvas>
+			<div class="snake-overlay" id="overlay">Press any arrow key or WASD to start</div>
+		</div>
+	</div>
+
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

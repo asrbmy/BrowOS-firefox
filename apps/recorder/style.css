@@ -1,0 +1,15 @@
+.recorder { height: 100%; display: flex; flex-direction: column; gap: 12px; padding: 16px; overflow-y: auto; }
+.r-tabs { display: flex; gap: 6px; }
+.r-tabs button.on { background: var(--accent); border-color: transparent; color: #fff; }
+.r-panel { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 16px; border-radius: 14px; background: rgba(var(--panel), 0.06); }
+.r-time { font-size: 32px; font-variant-numeric: tabular-nums; }
+.r-meter { width: 100%; max-width: 360px; height: 8px; border-radius: 4px; background: rgba(var(--panel), 0.1); overflow: hidden; }
+.r-meter div { height: 100%; width: 0; background: var(--accent); transition: width 0.08s; }
+.r-record { padding: 10px 24px; border-radius: 22px; background: #e11d48; border-color: transparent; color: #fff; font-weight: 600; }
+.r-record.live { background: #444; }
+.r-msg { min-height: 18px; font-size: 13px; color: var(--muted); text-align: center; }
+.r-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.r-item { display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; align-items: center; padding: 10px; border-radius: 10px; background: rgba(var(--panel), 0.05); }
+.r-item .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.r-item audio, .r-item video { grid-column: 1 / -1; width: 100%; max-height: 260px; }
+.r-item button { padding: 3px 9px; font-size: 12px; }

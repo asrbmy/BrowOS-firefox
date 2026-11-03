@@ -120,10 +120,15 @@ function updateTimer() {
 			timerStartButton.textContent = "Start";
 			timerTime.textContent = "00:00";
 
-			startupSound.currentTime = 0;
-			startupSound.play().catch(() => {});
+			// a notification with an alarm sound (it shows even with Do not disturb on)
+			if (typeof notify === "function") {
+				notify("Timer", "Time's up!", { important: true, sound: "alarm", duration: 10000 });
+			} else {
+				startupSound.currentTime = 0;
+				startupSound.play().catch(() => {});
 
-			alert("Time's up!");
+				alert("Time's up!");
+			}
 
 			timerLeft = Number(timerMinutes.value) * 60000;
 		}

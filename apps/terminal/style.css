@@ -1,0 +1,61 @@
+body {
+	background: #0e0f13;
+	color: #d7e0d3;
+	font-family: Consolas, "Courier New", monospace;
+	font-size: 14px;
+}
+
+.term {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 12px 14px;
+}
+
+.term-output {
+	flex: 1;
+	overflow-y: auto;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+	line-height: 1.45;
+}
+
+.term-output .cmd {
+	color: #8fd18f;
+}
+
+.term-output .err {
+	color: #ff8a80;
+}
+
+.term-output .dim {
+	color: #8b93a0;
+}
+
+.term-output .accent {
+	color: var(--accent);
+}
+
+.term-line {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding-top: 8px;
+}
+
+.term-prompt {
+	flex: none;
+	color: #8fd18f;
+}
+
+.term-line input {
+	flex: 1;
+	min-width: 0;
+	padding: 0;
+	border: none;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	outline: none;
+	caret-color: var(--accent);
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Current weather and a five day forecast for any city, from Open-Meteo.">
+	<title>Weather</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="weather">
+		<form class="weather-search" id="searchForm">
+			<input type="search" id="searchInput" placeholder="Search for a city" autocomplete="off">
+			<button class="primary" type="submit">Search</button>
+			<button type="button" id="unitButton" title="Switch °C / °F">°C</button>
+		</form>
+
+		<div class="weather-results" id="results" hidden></div>
+
+		<div class="weather-message muted" id="message"></div>
+
+		<div class="weather-now" id="now" hidden>
+			<div class="weather-place" id="place"></div>
+
+			<div class="weather-big">
+				<span class="weather-icon" id="icon"></span>
+				<span class="weather-temp" id="temp"></span>
+			</div>
+
+			<div class="weather-desc" id="desc"></div>
+			<div class="weather-details muted" id="details"></div>
+		</div>
+
+		<div class="weather-days" id="days" hidden></div>
+	</div>
+
+	<script src="../shared/theme.js"></script>
+	<script src="weather-core.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

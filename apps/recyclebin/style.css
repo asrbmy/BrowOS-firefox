@@ -1,0 +1,75 @@
+.bin {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 16px;
+}
+
+.bin-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.bin-title {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.bin-list {
+	flex: 1;
+	margin: 0;
+	padding: 0;
+	overflow-y: auto;
+	list-style: none;
+}
+
+.bin-item {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 10px 12px;
+	margin-bottom: 6px;
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	background: rgba(var(--panel), 0.04);
+}
+
+.bin-item img {
+	width: 32px;
+	height: 32px;
+	flex: none;
+	object-fit: contain;
+}
+
+.bin-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.bin-name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.bin-when {
+	font-size: 12px;
+}
+
+.bin-delete:hover {
+	border-color: transparent;
+	background: var(--danger);
+	color: white;
+}
+
+.bin-empty {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	line-height: 1.6;
+}

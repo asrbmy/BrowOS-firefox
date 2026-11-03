@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Read PDF files from your files or your computer.">
+	<title>PDF Viewer</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="pv">
+		<div class="pv-bar">
+			<button id="openButton">Open…</button>
+			<span class="pv-name muted" id="name">No document</span>
+			<button id="downloadButton" hidden>Download</button>
+			<button id="saveButton" hidden>Save to Files</button>
+		</div>
+		<div class="pv-stage">
+			<div class="pv-empty muted" id="empty">Open a PDF, or double-click one in Files.</div>
+			<iframe id="view" title="PDF" hidden></iframe>
+		</div>
+		<input type="file" id="fileInput" accept="application/pdf,.pdf" hidden>
+	</div>
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

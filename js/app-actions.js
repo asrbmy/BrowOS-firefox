@@ -89,6 +89,11 @@ function removeApp(id) {
 
 	const app = getApp(id);
 
+	// keep a copy in the Recycle Bin so it can be restored
+	if (app && typeof binRecord === "function") {
+		binRecord(id);
+	}
+
 	if (app) {
 		const appWindow = app.window
 			? document.getElementById(app.window)
@@ -167,7 +172,10 @@ function deleteAppData(id) {
 
 	// reload the app if it is open so it starts clean
 
-	const frame = document.querySelector("#" + app.window + " iframe");
+	// apps that live in apps/ get their window created on first open
+	const frame = document.querySelector(
+		"#" + (app.window || "appWindow-" + app.id) + " iframe"
+	);
 
 	if (frame && frame.getAttribute("src")) {
 		frame.src = frame.getAttribute("src");

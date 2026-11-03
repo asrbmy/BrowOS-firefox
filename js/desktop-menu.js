@@ -87,6 +87,18 @@ desktopMenu.querySelectorAll(".context-item").forEach(function (item) {
 			sortDesktopIcons();
 		}
 
+		if (action === "new-note") {
+			createStickyNote("");
+		}
+
+		if (action === "widgets") {
+			openSettingsPage("widgetsPage");
+		}
+
+		if (action === "lock") {
+			lockScreen();
+		}
+
 		if (action === "add-website") {
 			launchApp("browstore");
 

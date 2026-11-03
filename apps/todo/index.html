@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="A simple task list with due dates. Your tasks stay in your browser.">
+	<title>To-Do</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="todo">
+		<form class="todo-add" id="addForm">
+			<input type="text" id="addInput" placeholder="Add a task and press Enter" maxlength="200" autocomplete="off">
+			<input type="date" id="addDate" title="Due date (optional)">
+			<button class="primary" type="submit">Add</button>
+		</form>
+
+		<div class="todo-filters" id="filters">
+			<button data-filter="all" class="on">All</button>
+			<button data-filter="open">Open</button>
+			<button data-filter="done">Done</button>
+			<span class="todo-count muted" id="count"></span>
+			<button id="clearDone" title="Remove all finished tasks">Clear done</button>
+		</div>
+
+		<ul class="todo-list" id="list"></ul>
+		<div class="todo-empty muted" id="empty" hidden>Nothing here yet.</div>
+	</div>
+
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Play music files from your computer.">
+	<title>Music</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="music" id="dropZone">
+		<div class="music-now">
+			<div class="music-art" id="art">♪</div>
+			<div class="music-title" id="title">Nothing playing</div>
+			<div class="music-sub muted" id="subtitle">Add songs from your computer to start</div>
+		</div>
+
+		<div class="music-seek">
+			<span id="current">0:00</span>
+			<input type="range" id="seek" min="0" max="1000" value="0" disabled>
+			<span id="total">0:00</span>
+		</div>
+
+		<div class="music-controls">
+			<button id="shuffleButton" title="Shuffle">⇄</button>
+			<button id="prevButton" title="Previous">⏮</button>
+			<button class="primary music-play" id="playButton" title="Play / pause">▶</button>
+			<button id="nextButton" title="Next">⏭</button>
+			<button id="repeatButton" title="Repeat: off">↻</button>
+
+			<input type="range" id="volume" min="0" max="100" value="80" title="Volume">
+		</div>
+
+		<div class="music-bar">
+			<label class="music-add">
+				<button type="button" id="addButton" class="primary">Add songs</button>
+				<input type="file" id="fileInput" accept="audio/*" multiple hidden>
+			</label>
+
+			<button id="clearButton">Clear list</button>
+			<span class="muted music-hint">or drop audio files here</span>
+		</div>
+
+		<ul class="music-list" id="list"></ul>
+	</div>
+
+	<audio id="audio" preload="metadata"></audio>
+
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="A one-button game: hop the orb through the gaps.">
+	<title>Orb Hop</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="orb">
+		<div class="orb-top"><span>Score <b id="score">0</b></span><span>Best <b id="best">0</b></span></div>
+		<div class="orb-stage" id="stage">
+			<canvas id="board" width="420" height="600" aria-label="Orb Hop game"></canvas>
+			<div class="orb-overlay" id="overlay">Press Space, click or tap to hop</div>
+		</div>
+	</div>
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

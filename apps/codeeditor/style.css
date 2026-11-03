@@ -1,0 +1,18 @@
+.ce { height: 100%; display: flex; flex-direction: column; --tok-kw: #c678dd; --tok-str: #98c379; --tok-num: #d19a66; --tok-com: #7f848e; --tok-tag: #e06c75; }
+:root.light-mode .ce { --tok-kw: #a626a4; --tok-str: #50a14f; --tok-num: #986801; --tok-com: #8a8f98; --tok-tag: #e45649; }
+.ce-bar { display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.ce-bar button { padding: 5px 10px; }
+.ce-name { flex: 1; min-width: 0; margin-left: 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.ce-name.dirty::after { content: " ●"; color: var(--accent); }
+.ce-wrap { font-size: 12px; display: flex; align-items: center; gap: 4px; }
+.ce-editor { flex: 1; display: flex; min-height: 0; overflow: auto; font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace; }
+.ce-lines { margin: 0; padding: 10px 8px; text-align: right; color: var(--muted); background: rgba(var(--panel), 0.04); user-select: none; font: inherit; flex: none; min-width: 40px; }
+.ce-code { position: relative; flex: 1; min-width: 0; }
+.ce-highlight, .ce-code textarea { margin: 0; padding: 10px; border: 0; font: inherit; tab-size: 4; white-space: pre; overflow: hidden; letter-spacing: 0; }
+.ce-highlight { position: absolute; inset: 0; pointer-events: none; overflow: visible; min-width: 100%; }
+.ce-code textarea { position: relative; display: block; width: 100%; min-width: 100%; height: 100%; min-height: 100%; resize: none; background: transparent; color: transparent; caret-color: var(--text); outline: none; overflow: hidden; }
+.ce.wrapping .ce-highlight, .ce.wrapping .ce-code textarea { white-space: pre-wrap; overflow-wrap: anywhere; }
+.ce-code textarea::selection { background: color-mix(in srgb, var(--accent) 40%, transparent); color: transparent; }
+.ce-highlight { color: var(--text); }
+.tok-kw { color: var(--tok-kw); } .tok-str { color: var(--tok-str); } .tok-num { color: var(--tok-num); } .tok-com { color: var(--tok-com); font-style: italic; } .tok-tag { color: var(--tok-tag); }
+.ce-status { padding: 4px 12px; border-top: 1px solid var(--line); font-size: 12px; }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Browse, upload and organize files stored in your browser.">
+	<title>Files</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="fm">
+		<div class="fm-bar">
+			<button id="upButton" title="Up one folder">↑</button>
+			<div class="fm-path" id="path"></div>
+			<input type="search" id="search" placeholder="Search files" autocomplete="off">
+		</div>
+
+		<div class="fm-bar fm-actions">
+			<button id="uploadButton" class="primary">Upload</button>
+			<button id="newFolderButton">New folder</button>
+			<button id="newFileButton">New text file</button>
+			<span class="fm-spacer"></span>
+			<button id="trashButton" title="Trash">Trash</button>
+			<button id="emptyTrashButton" hidden>Empty trash</button>
+		</div>
+
+		<div class="fm-main" id="main">
+			<ul class="fm-list" id="list"></ul>
+			<div class="fm-empty muted" id="empty" hidden></div>
+			<div class="fm-drop" id="drop" hidden>Drop files to upload</div>
+		</div>
+
+		<div class="fm-status muted" id="status"></div>
+		<input type="file" id="fileInput" multiple hidden>
+	</div>
+
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

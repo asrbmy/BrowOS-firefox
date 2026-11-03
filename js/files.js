@@ -6,12 +6,9 @@ const explorerWindow = document.getElementById("explorerWindow");
 
 const closeExplorer = document.getElementById("closeExplorer");
 
+// the taskbar folder opens the Files app
 explorerButton.addEventListener("click", function () {
-	explorerWindow.classList.toggle("show");
-
-	if (explorerWindow.classList.contains("show")) {
-		bringToFront(explorerWindow);
-	}
+	launchApp("files");
 });
 
 explorerWindow.addEventListener("pointerdown", function () {

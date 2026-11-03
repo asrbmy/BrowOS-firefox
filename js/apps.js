@@ -14,36 +14,13 @@ function loadList(key, fallback) {
 	return fallback;
 }
 
-// only normal web addresses are ever opened, shown in a frame or given to the browser
-
-function isWebUrl(value) {
-	try {
-		const url = new URL(value);
-
-		return url.protocol === "https:" || url.protocol === "http:";
-	} catch (error) {
-		return false;
-	}
-}
-
-// what a website inside BrowOS may do: run, sign in, open pop-ups and download,
-// but never navigate the BrowOS page itself away
-
-const webAppSandbox =
-	"allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox " +
-	"allow-modals allow-downloads allow-presentation";
-
 let installedApps = loadList("browos-installed", null);
 
 let desktopShortcuts = loadList("browos-desktop", []);
 
 let taskbarPins = loadList("browos-pins", ["browstore"]);
 
-// broken or edited saved sites (no valid web address) are skipped instead of breaking the desktop
-
-let customSites = loadList("browos-sites", []).filter(function (site) {
-	return site && typeof site.id === "string" && isWebUrl(site.url);
-});
+let customSites = loadList("browos-sites", []);
 
 // how each web app opens: "inside" BrowOS (default), as a floating "window", or in a browser "tab"
 
@@ -253,6 +230,13 @@ function createAppWindow(app) {
 	appWindow.dataset.appName = app.name;
 	appWindow.dataset.appIcon = app.icon;
 
+	// a starting size that suits the app (width, height)
+
+	if (app.size) {
+		appWindow.style.width = Math.min(app.size[0], window.innerWidth - 20) + "px";
+		appWindow.style.height = Math.min(app.size[1], window.innerHeight - 130) + "px";
+	}
+
 	const header = document.createElement("div");
 
 	header.className = "window-header";
@@ -293,13 +277,10 @@ function createAppWindow(app) {
 
 	frame.className = "web-app-frame";
 
-	if (isWebUrl(app.url)) {
-		frame.dataset.src = app.url;
-	}
+	// websites use their address, apps that come with BrowOS use their own page
+	frame.dataset.src = app.page || app.url;
 
-	frame.setAttribute("sandbox", webAppSandbox);
-
-	frame.allow = "fullscreen; clipboard-write; autoplay";
+	frame.allow = "fullscreen; clipboard-write; autoplay; microphone; display-capture";
 
 	appWindow.append(header, frame);
 
@@ -344,11 +325,7 @@ function addOpenInTabButton(appWindow, app) {
 }
 
 function openInBrowserTab(url) {
-	if (!isWebUrl(url)) {
-		return;
-	}
-
-	window.open(url, "_blank", "noopener,noreferrer");
+	window.open(url, "_blank", "noopener");
 }
 
 // How web apps open

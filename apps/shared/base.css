@@ -1,0 +1,103 @@
+/* Shared look for BrowOS apps (follows the desktop theme and accent color) */
+
+:root {
+	--accent: #2196f3;
+	--bg: #16161c;
+	--panel: 255, 255, 255;
+	--text: #f2f2f5;
+	--muted: rgba(255, 255, 255, 0.6);
+	--line: rgba(255, 255, 255, 0.12);
+	--danger: #e5534b;
+}
+
+:root.light-mode {
+	--bg: #f6f6f9;
+	--panel: 0, 0, 0;
+	--text: #1d1d1f;
+	--muted: rgba(0, 0, 0, 0.55);
+	--line: rgba(0, 0, 0, 0.12);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	height: 100%;
+}
+
+body {
+	background: var(--bg);
+	color: var(--text);
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+
+button {
+	padding: 8px 14px;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	background: rgba(var(--panel), 0.08);
+	cursor: pointer;
+}
+
+button:hover {
+	background: rgba(var(--panel), 0.15);
+}
+
+button.primary {
+	border-color: transparent;
+	background: var(--accent);
+	color: white;
+}
+
+button.primary:hover {
+	filter: brightness(1.1);
+}
+
+button:disabled {
+	opacity: 0.45;
+	cursor: default;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="search"],
+select {
+	padding: 8px 10px;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	background: rgba(var(--panel), 0.06);
+	outline: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+select:focus {
+	border-color: var(--accent);
+}
+
+input[type="range"],
+input[type="checkbox"] {
+	accent-color: var(--accent);
+}
+
+.muted {
+	color: var(--muted);
+}
+
+[hidden] {
+	display: none !important;
+}

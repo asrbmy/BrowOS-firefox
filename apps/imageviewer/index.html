@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="View pictures from your files or your computer.">
+	<title>Image Viewer</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="iv">
+		<div class="iv-bar">
+			<button id="openButton">Open…</button>
+			<button id="prev" title="Previous picture in the folder" disabled>‹</button>
+			<button id="next" title="Next picture in the folder" disabled>›</button>
+			<span class="iv-name muted" id="name">No picture</span>
+			<button id="zoomOut" title="Zoom out">−</button>
+			<button id="fit" title="Fit to window">Fit</button>
+			<button id="zoomIn" title="Zoom in">+</button>
+			<button id="rotate" title="Rotate">⟳</button>
+			<button id="saveButton" title="Keep a copy in Files" hidden>Save to Files</button>
+		</div>
+		<div class="iv-stage" id="stage"><div class="iv-empty muted" id="empty">Open a picture, or double-click one in Files.</div><img id="img" alt="" hidden></div>
+		<input type="file" id="fileInput" accept="image/*" hidden>
+	</div>
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

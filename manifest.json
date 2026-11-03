@@ -12,13 +12,16 @@
 	"chrome_url_overrides": {
 		"newtab": "index.html"
 	},
+	"permissions": [
+		"storage"
+	],
+	"optional_permissions": [
+		"bookmarks"
+	],
 	"browser_specific_settings": {
 		"gecko": {
-			"id": "browos@browos.pages.dev",
-			"strict_min_version": "140.0",
-			"data_collection_permissions": {
-				"required": ["none"]
-			}
+			"id": "browos@browos.invalid",
+			"strict_min_version": "115.0"
 		}
 	}
 }
