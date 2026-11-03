@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Password Generator">
+	<title>Password Generator</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="pg"><div class="pg-out"><input type="text" id="out" readonly aria-label="Password"><button id="copy">Copy</button></div><div class="pg-bar"><div id="bar"></div></div><p class="muted" id="strength"></p><label>Length <b id="lenv">16</b><input type="range" id="len" min="6" max="64" value="16"></label><label><input type="checkbox" id="lower" checked> a-z</label><label><input type="checkbox" id="upper" checked> A-Z</label><label><input type="checkbox" id="digits" checked> 0-9</label><label><input type="checkbox" id="symbols" checked> Symbols</label><label><input type="checkbox" id="similar"> Skip look-alikes (0 O l 1)</label><button class="primary" id="gen">Generate</button></div>
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

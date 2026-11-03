@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Typing Test">
+	<title>Typing Test</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="ty"><div class="ty-top"><select id="dur" aria-label="Duration"><option value="30">30 s</option><option value="60" selected>60 s</option><option value="120">2 min</option></select><span id="left">60</span><span id="wpm">0 wpm</span><span id="acc">100%</span><span class="muted" id="best"></span><button id="again">Restart</button></div><div class="ty-text" id="text" aria-live="off"></div><input type="text" id="inp" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Type here" placeholder="Start typing to begin"></div>
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

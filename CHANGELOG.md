@@ -10,6 +10,7 @@
 - Lock screen with optional PIN, screensaver, theme packs
 - Recycle Bin for removed apps and shortcuts
 - Export / import backup
+- New apps: Kanban, Converter, Password Generator, Typing Test
 - Apps now receive keyboard focus when opened
 - Files: file manager with folders, upload, drag and drop, trash and search; images, PDFs and text open in the viewers and editor
 - Calendar with repeating events and reminders

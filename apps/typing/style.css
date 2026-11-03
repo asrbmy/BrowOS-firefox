@@ -1,0 +1,10 @@
+.ty { height: 100%; display: flex; flex-direction: column; gap: 12px; padding: 14px; }
+.ty-top { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.ty-top select option { color: #000; }
+.ty-top span { font-variant-numeric: tabular-nums; font-weight: 600; }
+.ty-text { flex: 1; min-height: 0; overflow: auto; font-size: 20px; line-height: 1.7; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font-family: Georgia, serif; }
+.ty-text .ok { color: var(--accent); }
+.ty-text .bad { color: var(--danger); background: rgba(229, 83, 75, 0.18); }
+.ty-text .cur { background: color-mix(in srgb, var(--accent) 35%, transparent); border-radius: 3px; }
+.ty input { font-size: 16px; }
+.ty.done .ty-text { opacity: 0.6; }

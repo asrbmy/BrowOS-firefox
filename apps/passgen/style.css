@@ -1,0 +1,7 @@
+.pg { height: 100%; display: flex; flex-direction: column; gap: 10px; padding: 16px; }
+.pg-out { display: flex; gap: 8px; }
+.pg-out input { flex: 1; min-width: 0; font-family: monospace; font-size: 16px; }
+.pg-bar { height: 8px; border-radius: 4px; background: rgba(var(--panel), 0.12); overflow: hidden; }
+.pg-bar div { height: 100%; width: 0; transition: width 0.2s, background 0.2s; }
+.pg label { display: flex; gap: 8px; align-items: center; }
+.pg label input[type=range] { flex: 1; }

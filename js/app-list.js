@@ -393,6 +393,58 @@ const appCatalog = [
 		dataKeys: ["browos-tetris-best"],
 	},
 
+	{
+		id: "kanban",
+		name: "Kanban",
+		category: "apps",
+		builtIn: true,
+		icon: "icons/kanban-icon.svg",
+		page: "apps/kanban/index.html",
+		size: [820, 520],
+		officialPage: "apps/kanban/index.html",
+		credit: "Made for BrowOS",
+		dataKeys: ["browos-kanban"],
+	},
+
+	{
+		id: "converter",
+		name: "Converter",
+		category: "apps",
+		builtIn: true,
+		icon: "icons/converter-icon.svg",
+		page: "apps/converter/index.html",
+		size: [460, 420],
+		officialPage: "apps/converter/index.html",
+		credit: "Made for BrowOS",
+		dataKeys: [],
+	},
+
+	{
+		id: "passgen",
+		name: "Password Generator",
+		category: "apps",
+		builtIn: true,
+		icon: "icons/passgen-icon.svg",
+		page: "apps/passgen/index.html",
+		size: [460, 440],
+		officialPage: "apps/passgen/index.html",
+		credit: "Made for BrowOS",
+		dataKeys: [],
+	},
+
+	{
+		id: "typing",
+		name: "Typing Test",
+		category: "games",
+		builtIn: true,
+		icon: "icons/typing-icon.svg",
+		page: "apps/typing/index.html",
+		size: [720, 480],
+		officialPage: "apps/typing/index.html",
+		credit: "Made for BrowOS",
+		dataKeys: ["browos-typing-best-30", "browos-typing-best-60", "browos-typing-best-120"],
+	},
+
 	// web apps
 
 	{

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Converter">
+	<title>Converter</title>
+	<link rel="stylesheet" href="../shared/base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="cv"><div class="cv-tabs" id="tabs" role="tablist"></div><div class="cv-row"><input type="number" id="from" step="any" value="1" aria-label="Value"><select id="fromU" aria-label="From unit"></select></div><button id="swap" title="Swap units">⇅</button><div class="cv-row"><input type="text" id="to" readonly aria-label="Result"><select id="toU" aria-label="To unit"></select></div><p class="muted" id="note"></p></div>
+	<script src="../shared/theme.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
