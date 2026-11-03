@@ -80,6 +80,8 @@ BrowOS uses some great open-source work:
 
 Built by [Allysun](https://www.youtube.com/@YourAllyhere).
 
+Extra apps and features (Files, Calendar, Notes, Habits, Budget, Bookmarks, Recorder, Chess, Sudoku, Solitaire, Orb Hop, Kanban, Converter, Password Generator, Typing Test, image/PDF/code viewers, profiles, sync, SDK and more) by [Ajit (@asrbmy)](https://github.com/asrbmy).
+
 If you like it, you can [support the project on Ko-fi](https://ko-fi.com/browos).
 
 ## License
