@@ -1,10 +1,11 @@
 .tetris {
 	height: 100%;
 	display: flex;
-	align-items: center;
+	align-items: safe center;
 	justify-content: center;
 	gap: 18px;
 	padding: 12px;
+	overflow: auto;
 }
 
 .tetris-stage {

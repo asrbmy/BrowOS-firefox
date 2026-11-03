@@ -72,3 +72,97 @@
 
 	pointer-events: none;
 }
+
+/* desktop folders */
+.folder-popup {
+	position: fixed;
+	z-index: 400;
+	width: 320px;
+	max-width: calc(100vw - 16px);
+	padding: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 14px;
+	background: rgba(28, 28, 34, 0.92);
+	backdrop-filter: blur(18px);
+	color: #fff;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.folder-popup-head {
+	display: flex;
+	gap: 8px;
+	margin-bottom: 10px;
+}
+
+.folder-popup-head input {
+	flex: 1;
+	min-width: 0;
+	padding: 6px 8px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.08);
+	color: inherit;
+	font-weight: 700;
+}
+
+.folder-popup-head button,
+.folder-tile-out {
+	padding: 6px 10px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.08);
+	color: inherit;
+	cursor: pointer;
+}
+
+.folder-popup-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 8px;
+	max-height: 280px;
+	overflow-y: auto;
+}
+
+.folder-tile {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	padding: 10px 4px 6px;
+	border-radius: 10px;
+	font-size: 12px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.folder-tile:hover,
+.folder-tile:focus-visible {
+	background: rgba(255, 255, 255, 0.12);
+}
+
+.folder-tile img {
+	width: 40px;
+	height: 40px;
+	object-fit: contain;
+}
+
+.folder-tile-out {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	padding: 0 6px;
+	opacity: 0;
+}
+
+.folder-tile:hover .folder-tile-out,
+.folder-tile:focus-within .folder-tile-out {
+	opacity: 1;
+}
+
+.folder-popup-empty {
+	grid-column: 1 / -1;
+	margin: 6px 0;
+	opacity: 0.7;
+	font-size: 13px;
+}

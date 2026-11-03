@@ -11,6 +11,10 @@
 - Recycle Bin for removed apps and shortcuts
 - Export / import backup
 - New apps: Kanban, Converter, Password Generator, Typing Test
+- Live wallpapers: aurora, floating dots, rain, starfield (Settings → Personalization)
+- Desktop folders: right-click → New folder, drag icons onto it
+- Theme editor: any accent color, save and share your own looks (Settings → Personalization)
+- Fixes: toasts now show bottom right, Tetris scrolls in short windows, theme editor readable in light mode
 - Apps now receive keyboard focus when opened
 - Files: file manager with folders, upload, drag and drop, trash and search; images, PDFs and text open in the viewers and editor
 - Calendar with repeating events and reminders

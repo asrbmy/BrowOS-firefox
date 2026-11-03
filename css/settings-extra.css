@@ -125,3 +125,29 @@
 #systemPage .button-row.inline {
 	align-items: center;
 }
+
+/* theme editor */
+.my-theme-save { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.my-theme-save input { flex: 1; min-width: 140px; padding: 8px 10px; border: 1px solid rgba(var(--soft), 0.25); border-radius: 8px; background: rgba(var(--soft), 0.08); color: inherit; }
+.my-theme { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
+.my-theme-swatch { width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(var(--soft), 0.4); flex: none; }
+.my-theme-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#customAccent { width: 44px; height: 30px; padding: 0; border: 0; background: none; cursor: pointer; }
+.my-theme-save button,
+.my-theme button {
+	padding: 7px 12px;
+	border: 1px solid rgba(var(--soft), 0.25);
+	border-radius: 8px;
+	background: rgba(var(--soft), 0.1);
+	color: inherit;
+	cursor: pointer;
+}
+
+.my-theme-save button:hover,
+.my-theme button:hover {
+	background: rgba(var(--soft), 0.2);
+}
+
+.my-theme button {
+	padding: 4px 10px;
+}

@@ -206,6 +206,24 @@
 						</select>
 					</div>
 
+					<h3>Your looks</h3>
+
+					<div class="setting-row">
+						<span>Any accent color</span>
+
+						<input type="color" id="customAccent" value="#2196f3" aria-label="Accent color">
+					</div>
+
+					<div class="my-theme-save">
+						<input type="text" id="myThemeName" maxlength="30" placeholder="Name this look" aria-label="Name for this look">
+						<button id="myThemeSave">Save current look</button>
+						<button id="myThemeImport">Import code</button>
+					</div>
+
+					<div id="myThemeList"></div>
+
+					<p class="settings-note" id="myThemeNote" role="status"></p>
+
 					<h3>Wallpaper</h3>
 
 					<div class="wallpaper-list">
@@ -222,6 +240,10 @@
 
 						<input type="file" accept="image/*" id="wallpaperUpload" hidden>
 					</label>
+
+					<h3>Live effect</h3>
+
+					<select id="liveWallpaper" aria-label="Live wallpaper effect"></select>
 
 					<h3>Accent color</h3>
 
@@ -1044,6 +1066,7 @@
 <script src="js/appearance.js"></script>
 <script src="js/maximize.js"></script>
 <script src="js/wallpaper.js"></script>
+<script src="js/live-wallpaper.js"></script>
 <script src="js/cursor.js"></script>
 <script src="js/dropdowns.js"></script>
 <script src="js/browser.js"></script>
@@ -1068,6 +1091,7 @@
 <script src="js/switcher.js"></script>
 <script src="js/clipboard.js"></script>
 <script src="js/theme-packs.js"></script>
+<script src="js/theme-editor.js"></script>
 <script src="js/data-tools.js"></script>
 <script src="js/profiles.js"></script>
 <script src="apps/calendar/calendar-core.js"></script>
@@ -1081,6 +1105,7 @@
 <script src="js/a11y.js"></script>
 <script src="js/system-settings.js"></script>
 <script src="js/tour.js"></script>
+<script src="js/desktop-folders.js"></script>
 <script src="js/builtin-updates.js"></script>
 <script src="js/main.js"></script>
 <script src="js/browstore.js"></script>
